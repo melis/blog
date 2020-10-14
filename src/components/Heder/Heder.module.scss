@@ -1,0 +1,27 @@
+.heder {
+  background-color: #ffffff;
+  height: 80px;
+  .container {
+    align-items: center;
+    display: flex;
+    max-width: 1440px;
+    margin: auto;
+
+    height: 100%;
+    .title {
+      padding: 5px;
+      font-size: 18px;
+      line-height: 28px;
+    }
+    .login {
+      flex: 1;
+      justify-content: flex-end;
+      display: flex;
+      > div {
+        padding: 5px;
+        border: 1px solid;
+        margin: 5px;
+      }
+    }
+  }
+}
