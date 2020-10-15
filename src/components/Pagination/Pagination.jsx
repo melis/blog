@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Pagination } from "antd";
 import style from "./Pagination.module.scss";
 import { connect } from "react-redux";

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import * as actions from "../../store/articleActions";
+// import * as actions from "../../store/articleActions";
 import listCreator from "./listCreator";
 
 const Articles = (props) => {

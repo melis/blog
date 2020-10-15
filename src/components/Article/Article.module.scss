@@ -1,3 +1,33 @@
 .article {
-  padding: 10px;
+  max-width: 940px;
+  height: 140px;
+  background-color: white;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  .heder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .user {
+      display: flex;
+      align-items: center;
+      .name {
+      }
+      .avatar {
+        width: 45px;
+        height: 45px;
+
+        img {
+          border-radius: 50%;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .body {
+    padding-top: 15px;
+  }
 }
