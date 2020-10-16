@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./App.module.scss";
-import blogApi from "../../api/api";
 import Heder from "../Heder/Heder";
 import Content from "../Content/Content";
 

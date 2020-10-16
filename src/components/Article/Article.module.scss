@@ -11,10 +11,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .title {
+      font-size: 20px;
+      line-height: 28px;
+      color: #1890ff;
+      cursor: pointer;
+    }
     .user {
       display: flex;
       align-items: center;
-      .name {
+      .name_time {
+        margin-right: 10px;
+        text-align: right;
+        > div:first-child {
+          font-size: 18px;
+          line-height: 28px;
+        }
+        > div:last-child {
+          font-size: 12px;
+          line-height: 22px;
+          color: rgba(0, 0, 0, 0.5);
+        }
       }
       .avatar {
         width: 45px;
