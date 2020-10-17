@@ -12,7 +12,7 @@ const App = () => {
         <Heder />
         <Route path="/" exact component={Content} />
         <Route path="/articles" exact component={Content} />
-        <Route path="/articles/:slug" exact component={Slug} />
+        <Route path="/articles/:slugName" exact component={Slug} />
       </Router>
     </div>
   );

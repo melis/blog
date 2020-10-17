@@ -3,16 +3,10 @@ import { Pagination } from "antd";
 import style from "./Pagination.module.scss";
 import { connect } from "react-redux";
 import * as actions from "../../store/articlesActions";
-import blogApi from "../../api/api";
 
 const Pagin = (props) => {
   const { page, total } = props;
-  const {
-    setArticleOffset,
-    setArticleLoading,
-    setArticles,
-    setArticleTotal,
-  } = props;
+  const { setArticles } = props;
 
   return (
     <div className={style.pagination}>
@@ -23,12 +17,7 @@ const Pagin = (props) => {
         defaultPageSize={5}
         showSizeChanger={false}
         onChange={(val) => {
-          setArticleOffset(val - 1);
-          setArticleLoading(true);
-          blogApi.getArticles(val - 1).then((a) => {
-            setArticleLoading(false);
-            setArticles(a.articles, a.articlesCount);
-          });
+          setArticles(val - 1);
         }}
       />
     </div>

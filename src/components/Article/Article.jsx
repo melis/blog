@@ -4,8 +4,14 @@ import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
+const truncate = (text) => {
+  if (text.length > 185) return text.slice(0, 185) + "...";
+  return text;
+};
+
 const Article = (props) => {
   const { article } = props;
+
   // const input = '# This is a header\n\nAnd this is a paragraph'
 
   const date = format(new Date(2020 - 10 - 16), "MM/dd/yyyy");
@@ -32,7 +38,7 @@ const Article = (props) => {
           </div>
         </div>
       </div>
-      <div className={style.body}>{article.body}</div>
+      <div className={style.body}>{truncate(article.body)}</div>
       {/* <ReactMarkdown  source={input } /> */}
     </div>
   );

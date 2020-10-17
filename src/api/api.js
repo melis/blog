@@ -13,6 +13,17 @@ class Api {
         console.log(e);
       });
   }
+
+  async getSlug(slug) {
+    return await axios
+      .get(this.baseUrl + `articles/${slug}`)
+      .then((a) => {
+        return a.data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 }
 
 const blogApi = new Api();

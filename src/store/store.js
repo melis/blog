@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import reduxThunk from "redux-thunk";
 import articles from "./articlesReduser";
-import article from "./articleReduser";
+import slug from "./slugReduser";
 
 const store = createStore(
-  combineReducers({ articles, article }),
+  combineReducers({ articles, slug }),
   applyMiddleware(reduxThunk)
 );
 

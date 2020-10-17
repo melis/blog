@@ -4,19 +4,14 @@ import Articles from "../Articles/Articles";
 import style from "./Content.module.scss";
 import Spinner from "../Spinner/Spinner";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+
 import * as actions from "../../store/articlesActions";
-import blogApi from "../../api/api";
 
 const Content = (props) => {
-  const { loading, setArticleLoading, setArticles, setArticleTotal } = props;
+  const { loading, setArticles } = props;
 
   useEffect(() => {
-    setArticleLoading(true);
-    blogApi.getArticles().then((a) => {
-      setArticleLoading(false);
-      setArticles(a.articles, a.articlesCount);
-    });
+    setArticles();
   }, []);
 
   if (loading) return <Spinner />;
