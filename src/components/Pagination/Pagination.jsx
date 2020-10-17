@@ -12,12 +12,13 @@ const Pagin = (props) => {
     <div className={style.pagination}>
       <Pagination
         size="small"
+        showQuickJumper
         current={page}
         total={total}
         defaultPageSize={5}
         showSizeChanger={false}
         onChange={(val) => {
-          setArticles(val - 1);
+          setArticles(val);
         }}
       />
     </div>
@@ -25,7 +26,7 @@ const Pagin = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    page: state.articles.offset + 1,
+    page: state.articles.page,
     total: state.articles.total,
   };
 };

@@ -11,7 +11,7 @@ const Content = (props) => {
   const { loading, setArticles } = props;
 
   useEffect(() => {
-    setArticles();
+    setArticles(1);
   }, []);
 
   if (loading) return <Spinner />;

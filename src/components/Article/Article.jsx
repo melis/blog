@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Article.module.scss";
 import { format } from "date-fns";
-import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
 const truncate = (text) => {
@@ -12,9 +11,7 @@ const truncate = (text) => {
 const Article = (props) => {
   const { article } = props;
 
-  // const input = '# This is a header\n\nAnd this is a paragraph'
-
-  const date = format(new Date(2020 - 10 - 16), "MM/dd/yyyy");
+  const date = format(new Date(article.createdAt), "MMMM,dd,yyyy");
   return (
     <div className={style.article}>
       <div className={style.heder}>
@@ -39,7 +36,6 @@ const Article = (props) => {
         </div>
       </div>
       <div className={style.body}>{truncate(article.body)}</div>
-      {/* <ReactMarkdown  source={input } /> */}
     </div>
   );
 };

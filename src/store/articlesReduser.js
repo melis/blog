@@ -1,4 +1,4 @@
-const initialState = { articles: [], loading: false, total: null, offset: 0 };
+const initialState = { articles: [], loading: false, total: null, page: 1 };
 
 const articles = (state = initialState, action) => {
   switch (action.type) {
@@ -6,8 +6,8 @@ const articles = (state = initialState, action) => {
       return { ...state, articles: action.articles, total: action.total };
     case "SET_LOADING":
       return { ...state, loading: action.loading };
-    case "SET_OFFSET":
-      return { ...state, offset: action.offset };
+    case "SET_PAGE":
+      return { ...state, page: action.page };
     default:
       return state;
   }

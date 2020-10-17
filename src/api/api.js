@@ -2,9 +2,9 @@ import axios from "axios";
 
 class Api {
   baseUrl = "https://conduit.productionready.io/api/";
-  async getArticles(offset = 0) {
+  async getArticles(page = 1) {
     return await axios
-      .get(this.baseUrl + `articles?limit=5&offset=${offset}`)
+      .get(this.baseUrl + `articles?limit=5&offset=${page * 5 - 5}`)
       .then((a) => {
         // console.log(a);
         return a.data;
