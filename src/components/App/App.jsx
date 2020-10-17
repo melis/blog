@@ -8,8 +8,8 @@ import Slug from "../Slug/Slug";
 const App = () => {
   return (
     <div className={styles.app}>
-      <Heder />
       <Router>
+        <Heder />
         <Route path="/" exact component={Content} />
         <Route path="/articles" exact component={Content} />
         <Route path="/articles/:slug" exact component={Slug} />

@@ -5,7 +5,7 @@ import style from "./Content.module.scss";
 import Spinner from "../Spinner/Spinner";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as actions from "../../store/articleActions";
+import * as actions from "../../store/articlesActions";
 import blogApi from "../../api/api";
 
 const Content = (props) => {
@@ -15,8 +15,7 @@ const Content = (props) => {
     setArticleLoading(true);
     blogApi.getArticles().then((a) => {
       setArticleLoading(false);
-      setArticles(a.articles);
-      setArticleTotal(a.articlesCount);
+      setArticles(a.articles, a.articlesCount);
     });
   }, []);
 

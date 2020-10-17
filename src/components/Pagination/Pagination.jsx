@@ -2,7 +2,7 @@ import React from "react";
 import { Pagination } from "antd";
 import style from "./Pagination.module.scss";
 import { connect } from "react-redux";
-import * as actions from "../../store/articleActions";
+import * as actions from "../../store/articlesActions";
 import blogApi from "../../api/api";
 
 const Pagin = (props) => {
@@ -20,7 +20,6 @@ const Pagin = (props) => {
         size="small"
         current={page}
         total={total}
-        showQuickJumper
         defaultPageSize={5}
         showSizeChanger={false}
         onChange={(val) => {
@@ -28,8 +27,7 @@ const Pagin = (props) => {
           setArticleLoading(true);
           blogApi.getArticles(val - 1).then((a) => {
             setArticleLoading(false);
-            setArticleTotal(a.articlesCount);
-            setArticles(a.articles);
+            setArticles(a.articles, a.articlesCount);
           });
         }}
       />
