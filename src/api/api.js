@@ -6,11 +6,10 @@ class Api {
     return await axios
       .get(this.baseUrl + `articles?limit=5&offset=${page * 5 - 5}`)
       .then((a) => {
-        // console.log(a);
         return a.data;
       })
       .catch((e) => {
-        console.log(e);
+        return { error: e.message };
       });
   }
 
@@ -21,7 +20,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        console.log(e);
+        return { error: e.message };
       });
   }
 }

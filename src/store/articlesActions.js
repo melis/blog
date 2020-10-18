@@ -4,13 +4,17 @@ export const setArticles = (page) => {
   return (dispatch) => {
     dispatch({ type: "SET_LOADING", loading: true });
     blogApi.getArticles(page).then((a) => {
-      dispatch({
-        type: "SET_ARTICLES",
-        articles: a.articles,
-        total: a.articlesCount,
-      });
-      dispatch({ type: "SET_PAGE", page: page });
-      dispatch({ type: "SET_LOADING", loading: false });
+      if (a.error) {
+        dispatch({ type: "SET_ERROR", error: a.error });
+        dispatch({ type: "SET_LOADING", loading: false });
+      } else {
+        dispatch({
+          type: "SET_ARTICLES",
+          articles: a.articles,
+          total: a.articlesCount,
+          page,
+        });
+      }
     });
   };
 };
