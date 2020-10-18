@@ -7,7 +7,7 @@ const slug = (state = initialState, action) => {
     case "SET_SLUG_LOADING":
       return { ...state, loading: action.loading };
     case "SET_SLUG_ERROR":
-      return { ...state, error: action.error };
+      return { ...state, error: action.error, loading: false };
     default:
       return state;
   }

@@ -6,7 +6,6 @@ export const setSlug = (slugName) => {
     blogApi.getSlug(slugName).then((a) => {
       if (a.error) {
         dispatch({ type: "SET_SLUG_ERROR", error: a.error });
-        dispatch({ type: "SET_SLUG_LOADING", loading: false });
       } else {
         dispatch({
           type: "SET_SLUG",

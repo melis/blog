@@ -1,7 +1,10 @@
 import React from "react";
 import style from "./Heder.module.scss";
 import { Link } from "react-router-dom";
-const Heder = () => {
+import { connect } from "react-redux";
+
+const Heder = (props) => {
+  const { user } = props;
   return (
     <div className={style.heder}>
       <div className={style.container}>
@@ -9,11 +12,17 @@ const Heder = () => {
           <Link to="/">Realworld Blog</Link>
         </div>
         <div className={style.login}>
-          <div>Sign In</div>
-          <div>Sign Up</div>
+          <Link to="/sign-in">Sign In</Link>
+          <Link to="/sign-up">Sign Up</Link>
         </div>
       </div>
     </div>
   );
 };
-export default Heder;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user,
+  };
+};
+
+export default connect(mapStateToProps)(Heder);

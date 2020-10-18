@@ -6,7 +6,6 @@ export const setArticles = (page) => {
     blogApi.getArticles(page).then((a) => {
       if (a.error) {
         dispatch({ type: "SET_ERROR", error: a.error });
-        dispatch({ type: "SET_LOADING", loading: false });
       } else {
         dispatch({
           type: "SET_ARTICLES",
