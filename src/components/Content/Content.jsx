@@ -4,17 +4,22 @@ import Articles from "../Articles/Articles";
 import style from "./Content.module.scss";
 import Spinner from "../Spinner/Spinner";
 import { connect } from "react-redux";
+import { Result } from "antd";
 
 import * as actions from "../../store/articlesActions";
 
 const Content = (props) => {
-  const { loading, setArticles } = props;
+  const { loading, setArticles, error } = props;
 
   useEffect(() => {
     setArticles(1);
   }, []);
 
   if (loading) return <Spinner />;
+
+  if (error) {
+    return <Result status="warning" title={error} />;
+  }
 
   return (
     <div className={style.content}>
@@ -27,6 +32,7 @@ const Content = (props) => {
 const mapStateToProps = (state) => {
   return {
     loading: state.articles.loading,
+    error: state.articles.error,
   };
 };
 
