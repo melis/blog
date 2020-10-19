@@ -8,6 +8,7 @@ import * as actions from '../../store/userActions';
 const SignIn = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const { setUser } = props;
+
   const onSubmit = (data) => {
     setUser(data);
   };
@@ -51,15 +52,3 @@ const SignIn = (props) => {
 };
 
 export default connect(null, actions)(SignIn);
-
-{
-  /* <form onSubmit={handleSubmit(onSubmit)}>
-  <input
-    name="firstName"
-    ref={register({ required: true, maxLength: 20, pattern: /^[A-Za-z]+$/i })}
-  />
-  <input name="lastName" ref={register({ pattern: /^[A-Za-z]+$/i })} />
-  <input name="age" type="number" ref={register({ min: 18, max: 99 })} />
-  <input type="submit" />
-</form>; */
-}

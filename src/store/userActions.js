@@ -7,9 +7,6 @@ export const setUser = (userDate) => {
       if (a.error) {
         dispatch({ type: 'SET_USER_ERROR', error: a.error });
       } else {
-        console.log(a.user);
-        sessionStorage.setItem('email', a.user.email);
-
         dispatch({
           type: 'SET_USER',
           user: a.user,
@@ -17,4 +14,9 @@ export const setUser = (userDate) => {
       }
     });
   };
+};
+
+export const logOut = () => {
+  window.localStorage.clear();
+  return { type: 'LOG_OUT' };
 };

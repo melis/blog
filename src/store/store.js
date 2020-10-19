@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { persistStore } from 'redux-persist';
 import reduxThunk from 'redux-thunk';
-import articles from './articlesReduser';
-import slug from './slugReduser';
-import user from './userReduser';
-const store = createStore(combineReducers({ articles, slug, user }), applyMiddleware(reduxThunk));
+import rootReduser from './rootReduser';
 
-export default store;
+export const store = createStore(rootReduser, applyMiddleware(reduxThunk));
+export const persistor = persistStore(store);
+export default { store, persistor };

@@ -8,6 +8,8 @@ const user = (state = initialState, action) => {
       return { ...state, loading: action.loading };
     case 'SET_USER_ERROR':
       return { ...state, error: action.error, loading: false };
+    case 'LOG_OUT':
+      return { ...state, user: null, error: null, loading: true };
     default:
       return state;
   }
