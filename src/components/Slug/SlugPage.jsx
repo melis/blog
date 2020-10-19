@@ -1,12 +1,12 @@
-import React from "react";
-import style from "./SlugPage.module.scss";
-import { format } from "date-fns";
-import ReactMarkdown from "react-markdown";
+import React from 'react';
+import style from './SlugPage.module.scss';
+import { format } from 'date-fns';
+import ReactMarkdown from 'react-markdown';
 
 const SlugPage = (props) => {
   const { article } = props;
 
-  const date = format(new Date(article.createdAt), "MMMM,dd,yyyy");
+  const date = format(new Date(article.createdAt), 'MMMM,dd,yyyy');
   return (
     <div className={style.page}>
       <div className={style.heder}>

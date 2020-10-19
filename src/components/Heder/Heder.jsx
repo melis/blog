@@ -1,7 +1,7 @@
-import React from "react";
-import style from "./Heder.module.scss";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import style from './Heder.module.scss';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Heder = (props) => {
   const { user } = props;
@@ -24,5 +24,5 @@ const mapStateToProps = (state) => {
     user: state.user.user,
   };
 };
-as
+
 export default connect(mapStateToProps)(Heder);

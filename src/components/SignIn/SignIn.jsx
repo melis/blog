@@ -1,9 +1,9 @@
-import React from "react";
-import style from "./SignIn.module.scss";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../../store/userActions";
+import React from 'react';
+import style from './SignIn.module.scss';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../store/userActions';
 
 const SignIn = (props) => {
   const { register, handleSubmit, errors } = useForm();
@@ -21,7 +21,7 @@ const SignIn = (props) => {
           className={errors.email && style.error}
           name="email"
           ref={register({
-            required: "email",
+            required: 'email',
             maxLength: 20,
           })}
           type="text"
@@ -34,7 +34,7 @@ const SignIn = (props) => {
           className={errors.password && style.error}
           name="password"
           ref={register({
-            required: "password",
+            required: 'password',
             maxLength: 20,
           })}
           type="password"

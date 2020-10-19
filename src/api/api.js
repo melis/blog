@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 class Api {
-  baseUrl = "https://conduit.productionready.io/api/";
+  baseUrl = 'https://conduit.productionready.io/api/';
 
   async getArticles(page = 1) {
     return await axios
@@ -27,9 +27,14 @@ class Api {
 
   async signIn(user) {
     console.log(user);
+    if (!user)
+      user = {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTE5NDQyLCJ1c2VybmFtZSI6Ik1lbGlzWmgiLCJleHAiOjE2MDgyOTAzOTR9.bjpV0mtRuiHtITawlkxvCKJtCPOdyuMZ_kWe7a4dQDE',
+      };
 
     return await axios
-      .post(this.baseUrl + "users/login", { user })
+      .post(this.baseUrl + 'users/login', { user })
       .then((a) => {
         return a.data;
       })
@@ -41,16 +46,9 @@ class Api {
 
   async createAccaunt(user) {
     console.log(user);
-    const obj = {
-      user: {
-        username: "MelisZh",
-        email: "meliszhold@gmail.com",
-        password: "805087Abc",
-      },
-    };
 
     return await axios
-      .post(this.baseUrl + "users", obj)
+      .post(this.baseUrl + 'users', { user })
       .then((a) => {
         console.log(a);
       })
