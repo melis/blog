@@ -26,13 +26,6 @@ class Api {
   }
 
   async signIn(user) {
-    console.log(user);
-    if (!user)
-      user = {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTE5NDQyLCJ1c2VybmFtZSI6Ik1lbGlzWmgiLCJleHAiOjE2MDgyOTAzOTR9.bjpV0mtRuiHtITawlkxvCKJtCPOdyuMZ_kWe7a4dQDE',
-      };
-
     return await axios
       .post(this.baseUrl + 'users/login', { user })
       .then((a) => {
