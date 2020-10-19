@@ -24,5 +24,5 @@ const mapStateToProps = (state) => {
     user: state.user.user,
   };
 };
-
+as
 export default connect(mapStateToProps)(Heder);
