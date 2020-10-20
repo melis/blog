@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './SignIn.module.scss';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import * as actions from '../../store/userActions';
 
 const SignIn = (props) => {
   const { register, handleSubmit, errors } = useForm();
-  const { setUser } = props;
+  const { setUser, error, resetError } = props;
 
   const onSubmit = (data) => {
     setUser(data);
@@ -42,7 +42,7 @@ const SignIn = (props) => {
         />
         {errors.password && <p>Your {errors.password.message} is required</p>}
       </label>
-
+      {error ? <p>{error}</p> : null}
       <input type="submit" className={style.submit} />
       <div className={style.info}>
         Don't have an accaunt? <Link to="/sign-up">Sign Up</Link>
@@ -50,5 +50,9 @@ const SignIn = (props) => {
     </form>
   );
 };
-
-export default connect(null, actions)(SignIn);
+const mapStateToProps = (state) => {
+  return {
+    error: state.user.error,
+  };
+};
+export default connect(mapStateToProps, actions)(SignIn);

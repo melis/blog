@@ -16,6 +16,30 @@ export const setUser = (userDate) => {
   };
 };
 
+export const createUser = (newUser) => {
+  console.log(newUser);
+  let user = {
+    email: newUser.email,
+    username: newUser.username,
+    password: newUser.password_1,
+  };
+  return (dispatch) => {
+    dispatch({ type: 'SET_USER_LOADING', loading: true });
+    blogApi.createAccaunt(user).then((a) => {
+      if (a.error) {
+        dispatch({ type: 'SET_USER_ERROR', error: a.error });
+      } else {
+        dispatch({
+          type: 'SET_USER',
+          user: a.user,
+        });
+      }
+    });
+  };
+};
+export const resetError = () => {
+  return { type: 'SET_USER_ERROR', error: null };
+};
 export const logOut = () => {
   window.localStorage.clear();
   return { type: 'LOG_OUT' };

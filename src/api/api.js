@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import axios from 'axios';
 
 class Api {
@@ -26,21 +27,17 @@ class Api {
   }
 
   async signIn(user) {
-    console.log(user);
-    if (!user)
-      user = {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTE5NDQyLCJ1c2VybmFtZSI6Ik1lbGlzWmgiLCJleHAiOjE2MDgyOTAzOTR9.bjpV0mtRuiHtITawlkxvCKJtCPOdyuMZ_kWe7a4dQDE',
-      };
-
     return await axios
       .post(this.baseUrl + 'users/login', { user })
       .then((a) => {
         return a.data;
       })
       .catch((e) => {
-        console.log(e.response.data.errors);
-        return { error: e.message };
+        console.log(e.response.data);
+        let message = 'Som sing is wrong ';
+        if (e.response.data.errors['email or password'])
+          message = 'Email or password ' + e.response.data.errors['email or password'][0];
+        return { error: message };
       });
   }
 
@@ -50,10 +47,14 @@ class Api {
     return await axios
       .post(this.baseUrl + 'users', { user })
       .then((a) => {
-        console.log(a);
+        return a.data;
       })
       .catch((e) => {
         console.log(e.response.data);
+        let message = 'Som sing is wrong ';
+        if (e.response.data.errors['email or password'])
+          message = 'Email or password ' + e.response.data.errors['email or password'][0];
+        return { error: message };
       });
   }
 }

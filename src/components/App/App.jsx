@@ -20,7 +20,9 @@ const App = (props) => {
         <Route path="/sign-in" exact>
           {loggedIn ? <Redirect to="/" /> : <SignIn />}
         </Route>
-        <Route path="/sign-up" exact component={SignUp} />
+        <Route path="/sign-up" exact>
+          {loggedIn ? <Redirect to="/" /> : <SignUp />}
+        </Route>
       </Router>
     </div>
   );
@@ -28,7 +30,7 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.user.user,
+    loggedIn: !!state.user.user,
   };
 };
 

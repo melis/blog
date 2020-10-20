@@ -10,7 +10,7 @@ const User = (props) => {
 
   return (
     <div className={style.login}>
-      <Link to="/user">{user.username}</Link>
+      <Link to="/profile">{user.username}</Link>
       <Link to="/" onClick={logOut}>
         LogOut
       </Link>
