@@ -7,6 +7,7 @@ import Slug from '../Slug/Slug';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import { connect } from 'react-redux';
+import EditUser from '../EditUser/EditUser';
 
 const App = (props) => {
   const { loggedIn } = props;
@@ -17,6 +18,7 @@ const App = (props) => {
         <Route path="/" exact component={Content} />
         <Route path="/articles" exact component={Content} />
         <Route path="/articles/:slugName" exact component={Slug} />
+        <Route path="/profile" exact component={EditUser} />
         <Route path="/sign-in" exact>
           {loggedIn ? <Redirect to="/" /> : <SignIn />}
         </Route>

@@ -18,11 +18,22 @@
       justify-content: flex-end;
       display: flex;
       > a {
+        color: black;
         border-radius: 5px;
         display: block;
         padding: 5px 10px;
-        border: 1px solid;
         margin: 5px;
+      }
+      .logout {
+        border: 1px solid;
+      }
+    }
+    .userImg {
+      > img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin: 0 10px;
       }
     }
   }

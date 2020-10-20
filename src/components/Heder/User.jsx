@@ -7,11 +7,14 @@ import { Link } from 'react-router-dom';
 
 const User = (props) => {
   const { user, logOut } = props;
-
+  console.log(user);
   return (
     <div className={style.login}>
       <Link to="/profile">{user.username}</Link>
-      <Link to="/" onClick={logOut}>
+      <div className={style.userImg}>
+        <img src={user.image} alt="" />
+      </div>
+      <Link to="/" onClick={logOut} className={style.logout}>
         LogOut
       </Link>
     </div>
