@@ -17,7 +17,6 @@ export const setUser = (userDate) => {
 };
 
 export const createUser = (newUser) => {
-  console.log(newUser);
   let user = {
     email: newUser.email,
     username: newUser.username,
@@ -37,6 +36,24 @@ export const createUser = (newUser) => {
     });
   };
 };
+
+export const updUser = (user, token) => {
+  return (dispatch) => {
+    dispatch({ type: 'SET_USER_LOADING', loading: true });
+    blogApi.updUser(user, token).then((a) => {
+      console.log(a);
+      if (a.error) {
+        dispatch({ type: 'SET_USER_ERROR', error: a.error });
+      } else {
+        dispatch({
+          type: 'SET_USER',
+          user: a.user,
+        });
+      }
+    });
+  };
+};
+
 export const resetError = () => {
   return { type: 'SET_USER_ERROR', error: null };
 };

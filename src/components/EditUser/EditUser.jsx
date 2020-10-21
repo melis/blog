@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import style from './EditUser.module.scss';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../store/userActions';
 
 const EditUser = (props) => {
-  const { error, user } = props;
+  const { error, user, updUser } = props;
 
   const { register, handleSubmit, errors, setError } = useForm();
   const [userName, setUserName] = useState(user.username);
@@ -15,7 +14,8 @@ const EditUser = (props) => {
   const [userPassword, setUserPassword] = useState('');
 
   const onSubmit = (a) => {
-    console.log(a);
+    setUserPassword('');
+    updUser(a, user.token);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.editUser}>
@@ -59,6 +59,7 @@ const EditUser = (props) => {
         <div>New password</div>
         <input
           onChange={(a) => {
+            console.log(a.target.value);
             setUserPassword(a.target.value);
           }}
           value={userPassword}
@@ -66,7 +67,7 @@ const EditUser = (props) => {
           name="password"
           ref={register({
             required: 'password',
-            minLength: 8,
+            minLength: 6,
             maxLength: 20,
           })}
           type="password"
@@ -81,7 +82,7 @@ const EditUser = (props) => {
           }}
           value={userImgUrl}
           className={errors.imgUrl && style.error}
-          name="imgUrl"
+          name="image"
           ref={register({})}
           type="text"
         />

@@ -33,32 +33,45 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        console.log(e.response.data);
-        let message = 'Som sing is wrong ';
-        if (e.response.data.errors['email or password'])
-          message = 'Email or password ' + e.response.data.errors['email or password'][0];
-        return { error: message };
+        return { error: e.message };
+      });
+  }
+  async updUser(user, token) {
+    return await axios
+      .put(
+        this.baseUrl + 'user',
+        {
+          user,
+        },
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      )
+      .then((a) => {
+        console.log(a.data);
+        return a.data;
+      })
+      .catch((e) => {
+        console.dir(e);
+        return { error: e.message };
       });
   }
 
   async createAccaunt(user) {
-    console.log(user);
-
     return await axios
       .post(this.baseUrl + 'users', { user })
       .then((a) => {
         return a.data;
       })
       .catch((e) => {
-        console.log(e.response.data);
-        let message = 'Som sing is wrong ';
-        if (e.response.data.errors['email or password'])
-          message = 'Email or password ' + e.response.data.errors['email or password'][0];
-        return { error: message };
+        return { error: e.message };
       });
   }
 }
 
 const blogApi = new Api();
 window.blogApi = blogApi;
+
 export default blogApi;
