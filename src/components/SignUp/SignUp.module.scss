@@ -51,3 +51,25 @@ p {
 .error {
   border: 1px solid red !important;
 }
+.chekbox {
+  display: flex !important;
+  border-top: 1px solid #e8e8e8;
+
+  align-items: top;
+  > span {
+    margin-top: 8px;
+    display: block;
+  }
+  > span:first-child {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    width: 8%;
+    > input:focus {
+      border: none !important;
+    }
+  }
+  > span:last-child {
+    width: 90%;
+  }
+}

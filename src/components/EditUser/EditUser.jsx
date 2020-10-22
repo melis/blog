@@ -59,7 +59,6 @@ const EditUser = (props) => {
         <div>New password</div>
         <input
           onChange={(a) => {
-            console.log(a.target.value);
             setUserPassword(a.target.value);
           }}
           value={userPassword}

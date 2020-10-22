@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './SignUp.module.scss';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../store/userActions';
+import { Checkbox } from 'antd';
 
 const SignUp = (props) => {
   const { error, createUser } = props;
   const { register, handleSubmit, errors, setError } = useForm();
-
+  const [chek, setChek] = useState(false);
   const onSubmit = (data) => {
     if (data.password_1 === data.password_2) {
       createUser(data);
@@ -23,7 +24,7 @@ const SignUp = (props) => {
       <label>
         <div>Username</div>
         <input
-          className={errors.userName && style.error}
+          className={errors.username && style.error}
           name="username"
           ref={register({
             required: 'username',
@@ -76,6 +77,16 @@ const SignUp = (props) => {
         {errors.password_2 && <p>Your {errors.password_2.message} is required</p>}
       </label>
       {error ? <p>{error}</p> : null}
+      <Checkbox
+        required
+        onChange={(a) => {
+          setChek(a.target.checked);
+        }}
+        className={style.chekbox}
+        checked={chek}
+      >
+        I agree to the processing of my personal information
+      </Checkbox>
       <input type="submit" className={style.submit} />
       <div className={style.info}>
         Alredy have an accaunt? <Link to="/sign-in">Sign In</Link>
