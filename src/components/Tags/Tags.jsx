@@ -10,11 +10,14 @@ class EditableTagGroup extends React.Component {
     inputValue: '',
   };
 
+  componentDidUpdate() {
+    this.props.setTags(this.state.tags);
+  }
+
   handleClose = (removedTag) => {
     const tags = this.state.tags.filter((tag) => tag !== removedTag);
-    console.log(tags);
+
     this.setState({ tags });
-    this.props.setTags(this.state.tags);
   };
 
   showInput = () => {
@@ -37,7 +40,6 @@ class EditableTagGroup extends React.Component {
       inputVisible: false,
       inputValue: '',
     });
-    this.props.setTags(this.state.tags);
   };
 
   saveInputRef = (input) => {
@@ -47,6 +49,7 @@ class EditableTagGroup extends React.Component {
   forMap = (tag) => {
     const tagElem = (
       <Tag
+        color="success"
         closable
         onClose={(e) => {
           e.preventDefault();
@@ -56,6 +59,7 @@ class EditableTagGroup extends React.Component {
         {tag}
       </Tag>
     );
+
     return (
       <span key={tag} style={{ display: 'inline-block' }}>
         {tagElem}

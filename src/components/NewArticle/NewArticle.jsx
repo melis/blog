@@ -2,20 +2,24 @@ import React, { useState, useEffect } from 'react';
 import style from './NewArticle.module.scss';
 import { useForm } from 'react-hook-form';
 import Tags from '../Tags/Tags';
+import { connect } from 'react-redux';
+import * as actions from '../../store/slugActions';
+import { withRouter } from 'react-router';
 
 const NewArticle = (props) => {
+  console.log(props);
+  const { createSlug, token, history } = props;
   const { register, handleSubmit, errors, setError } = useForm();
   const [tags, setTags] = useState([]);
-  const [newTag, setNewTag] = useState('');
-  const taglist = listCreator(tags);
 
-  console.log(tags);
   const onSubmit = (a) => {
     const newArticle = {
       ...a,
-      tags,
+      tagList: tags,
     };
-    console.log(newArticle);
+
+    createSlug(newArticle, token);
+    history.push('/');
   };
 
   return (
@@ -64,45 +68,21 @@ const NewArticle = (props) => {
         </label>
         <div className={style.tags}>
           <div>Tags</div>
-          {taglist}
-
-          <div className={style.add}>
-            <input
-              type="text"
-              value={newTag}
-              onChange={(a) => {
-                setNewTag(a.target.value);
-              }}
-            />
-            <span
-              onClick={() => {
-                if (newTag) {
-                  setTags([...tags, newTag]);
-                }
-              }}
-            >
-              Add tag
-            </span>
-          </div>
+          <Tags tags={tags} setTags={setTags} />
         </div>
-        <Tags tags={tags} setTags={setTags} />
+
         <input type="submit" />
       </form>
     </div>
   );
 };
-export default NewArticle;
-
-function listCreator(tags) {
-  let i = 0;
-  if (tags.length) {
-    return tags.map((tag) => {
-      return <div key={i++}>{tag}</div>;
-    });
-  }
-  return null;
-}
-
+const mapStateToProps = (state) => {
+  return {
+    token: state.user.user.token,
+    slug: state.slug.slug,
+  };
+};
+export default withRouter(connect(mapStateToProps, actions)(NewArticle));
 // {
 //   "article": {
 //     "title": "How to train your dragon",

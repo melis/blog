@@ -1,17 +1,17 @@
-import React from "react";
-import style from "./Article.module.scss";
-import { format } from "date-fns";
-import { Link } from "react-router-dom";
+import React from 'react';
+import style from './Article.module.scss';
+import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 const truncate = (text) => {
-  if (text.length > 185) return text.slice(0, 185) + "...";
+  if (text.length > 185) return text.slice(0, 185) + '...';
   return text;
 };
 
 const Article = (props) => {
   const { article } = props;
 
-  const date = format(new Date(article.createdAt), "MMMM,dd,yyyy");
+  const date = format(new Date(article.createdAt), 'MMMM,dd,yyyy');
   return (
     <div className={style.article}>
       <div className={style.heder}>
@@ -28,14 +28,14 @@ const Article = (props) => {
               src={
                 article.author.image
                   ? article.author.image
-                  : "https://static.productionready.io/images/smiley-cyrus.jpg"
+                  : 'https://static.productionready.io/images/smiley-cyrus.jpg'
               }
               alt=""
             />
           </div>
         </div>
       </div>
-      <div className={style.body}>{truncate(article.body)}</div>
+      <div className={style.body}>{truncate(article.description)}</div>
     </div>
   );
 };

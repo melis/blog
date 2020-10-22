@@ -1,4 +1,3 @@
-import { message } from 'antd';
 import axios from 'axios';
 
 class Api {
@@ -36,6 +35,18 @@ class Api {
         return { error: e.message };
       });
   }
+
+  async createAccaunt(user) {
+    return await axios
+      .post(this.baseUrl + 'users', { user })
+      .then((a) => {
+        return a.data;
+      })
+      .catch((e) => {
+        return { error: e.message };
+      });
+  }
+
   async updUser(user, token) {
     return await axios
       .put(
@@ -59,13 +70,22 @@ class Api {
       });
   }
 
-  async createAccaunt(user) {
+  async createArticle(article, token) {
     return await axios
-      .post(this.baseUrl + 'users', { user })
+      .post(
+        this.baseUrl + 'articles',
+        { article },
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      )
       .then((a) => {
         return a.data;
       })
       .catch((e) => {
+        console.dir(e);
         return { error: e.message };
       });
   }
