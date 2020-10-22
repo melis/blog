@@ -8,6 +8,7 @@ import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import { connect } from 'react-redux';
 import EditUser from '../EditUser/EditUser';
+import NewArticle from '../NewArticle/NewArticle';
 
 const App = (props) => {
   const { loggedIn } = props;
@@ -24,6 +25,9 @@ const App = (props) => {
         </Route>
         <Route path="/sign-up" exact>
           {loggedIn ? <Redirect to="/" /> : <SignUp />}
+        </Route>
+        <Route path="/new-article" exact>
+          {!loggedIn ? <Redirect to="/sign-in" /> : <NewArticle />}
         </Route>
       </Router>
     </div>

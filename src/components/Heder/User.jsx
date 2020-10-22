@@ -10,6 +10,9 @@ const User = (props) => {
   console.log(user);
   return (
     <div className={style.login}>
+      <Link to="/new-article" className={style.green}>
+        Create article
+      </Link>
       <Link to="/profile">{user.username}</Link>
       <div className={style.userImg}>
         <img src={user.image} alt="" />
