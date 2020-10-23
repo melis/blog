@@ -20,7 +20,6 @@ export const createSlug = (article, token, history) => {
   return (dispatch) => {
     dispatch({ type: 'SET_SLUG_LOADING', loading: true });
     blogApi.createArticle(article, token).then((a) => {
-      console.log(a);
       if (a.error) {
         dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
       } else {
@@ -30,6 +29,14 @@ export const createSlug = (article, token, history) => {
         });
         history.push('/articles/' + a.article.slug);
       }
+    });
+  };
+};
+
+export const deleteSlug = (slug, token) => {
+  return (dispatch) => {
+    blogApi.deleteArticle(slug, token).then((a) => {
+      dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
     });
   };
 };

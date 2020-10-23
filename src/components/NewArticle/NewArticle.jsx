@@ -32,7 +32,7 @@ const NewArticle = (props) => {
             ref={register({
               required: 'title',
               minLength: 5,
-              maxLength: 20,
+              maxLength: 50,
             })}
             type="text"
           />
@@ -46,7 +46,7 @@ const NewArticle = (props) => {
             ref={register({
               required: 'description',
               minLength: 10,
-              maxLength: 100,
+              maxLength: 300,
             })}
             type="text"
           />

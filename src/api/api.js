@@ -89,6 +89,21 @@ class Api {
         return { error: e.message };
       });
   }
+  async deleteArticle(slug, token) {
+    return await axios
+      .delete(this.baseUrl + 'articles/' + slug, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      .then((a) => {
+        return { error: 'Article deleted!' };
+      })
+      .catch((e) => {
+        console.dir(e);
+        return { error: e.message };
+      });
+  }
 }
 
 const blogApi = new Api();
