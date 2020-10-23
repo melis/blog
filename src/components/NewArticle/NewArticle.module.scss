@@ -29,6 +29,7 @@
     > div {
       padding-left: 4px;
       margin-top: 15px;
+      margin-bottom: 5px;
     }
     > input,
     > textarea {
@@ -45,5 +46,12 @@
   }
   .tags {
     margin: 30px 0;
+  }
+  .submit {
+    background: #1890ff;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    padding: 5px 30px;
   }
 }

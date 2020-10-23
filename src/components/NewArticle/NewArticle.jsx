@@ -7,7 +7,6 @@ import * as actions from '../../store/slugActions';
 import { withRouter } from 'react-router';
 
 const NewArticle = (props) => {
-  console.log(props);
   const { createSlug, token, history } = props;
   const { register, handleSubmit, errors, setError } = useForm();
   const [tags, setTags] = useState([]);
@@ -18,8 +17,7 @@ const NewArticle = (props) => {
       tagList: tags,
     };
 
-    createSlug(newArticle, token);
-    history.push('/');
+    createSlug(newArticle, token, history);
   };
 
   return (
@@ -71,7 +69,7 @@ const NewArticle = (props) => {
           <Tags tags={tags} setTags={setTags} />
         </div>
 
-        <input type="submit" />
+        <input type="submit" value="Send" className={style.submit} />
       </form>
     </div>
   );
@@ -79,15 +77,6 @@ const NewArticle = (props) => {
 const mapStateToProps = (state) => {
   return {
     token: state.user.user.token,
-    slug: state.slug.slug,
   };
 };
 export default withRouter(connect(mapStateToProps, actions)(NewArticle));
-// {
-//   "article": {
-//     "title": "How to train your dragon",
-//     "description": "Ever wonder how?",
-//     "body": "You have to believe",
-//     "tagList": ["reactjs", "angularjs", "dragons"]
-//   }
-// }

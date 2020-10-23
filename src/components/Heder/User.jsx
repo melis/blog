@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const User = (props) => {
   const { user, logOut } = props;
-  console.log(user);
+
   return (
     <div className={style.login}>
       <Link to="/new-article" className={style.green}>

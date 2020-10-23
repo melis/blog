@@ -16,7 +16,7 @@ export const setSlug = (slugName) => {
   };
 };
 
-export const createSlug = (article, token) => {
+export const createSlug = (article, token, history) => {
   return (dispatch) => {
     dispatch({ type: 'SET_SLUG_LOADING', loading: true });
     blogApi.createArticle(article, token).then((a) => {
@@ -28,6 +28,7 @@ export const createSlug = (article, token) => {
           type: 'SET_SLUG',
           slug: a.article,
         });
+        history.push('/articles/' + a.article.slug);
       }
     });
   };
