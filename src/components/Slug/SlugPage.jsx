@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './SlugPage.module.scss';
 import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
+import { Tag } from 'antd';
 
 const SlugPage = (props) => {
   const { article, user, deleteSlug } = props;
@@ -11,10 +12,16 @@ const SlugPage = (props) => {
   if (user) username = user.username;
   console.log(props);
   const date = format(new Date(article.createdAt), 'MMMM,dd,yyyy');
+  const taglist = article.tagList.map((tag) => {
+    return <Tag key={tag}>{tag}</Tag>;
+  });
   return (
     <div className={style.page}>
       <div className={style.heder}>
-        <div className={style.title}>{article.title}</div>
+        <div className={style.title}>
+          <div>{article.title}</div>
+          <div>{taglist}</div>
+        </div>
         <div className={style.user}>
           <div className={style.name_time}>
             <div>{article.author.username}</div>
