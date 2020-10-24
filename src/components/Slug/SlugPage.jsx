@@ -3,6 +3,7 @@ import style from './SlugPage.module.scss';
 import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import { Tag } from 'antd';
+import Like from '../Like/Like';
 
 const SlugPage = (props) => {
   const { article, user, deleteSlug } = props;
@@ -10,7 +11,7 @@ const SlugPage = (props) => {
 
   let username = '';
   if (user) username = user.username;
-  console.log(props);
+
   const date = format(new Date(article.createdAt), 'MMMM,dd,yyyy');
   const taglist = article.tagList.map((tag) => {
     return <Tag key={tag}>{tag}</Tag>;
@@ -18,8 +19,13 @@ const SlugPage = (props) => {
   return (
     <div className={style.page}>
       <div className={style.heder}>
-        <div className={style.title}>
-          <div>{article.title}</div>
+        <div className={style.hederLeftSide}>
+          <div className={style.titleAndLike}>
+            <div className={style.title} to={`articles/${article.slug}`}>
+              {article.title}
+            </div>
+            <Like article={article} />
+          </div>
           <div>{taglist}</div>
         </div>
         <div className={style.user}>
@@ -38,7 +44,6 @@ const SlugPage = (props) => {
           <div className={style.edit}>
             <span
               onClick={() => {
-                console.log(dell);
                 setDell(true);
               }}
             >

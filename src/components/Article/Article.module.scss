@@ -11,12 +11,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .title {
-      font-size: 20px;
-      line-height: 28px;
-      color: #1890ff;
-      cursor: pointer;
+    .titleAndLike {
+      display: flex;
+      align-items: center;
+      .title {
+        font-size: 20px;
+        line-height: 28px;
+        color: #1890ff;
+        cursor: pointer;
+        padding-right: 15px;
+      }
     }
+
     .user {
       display: flex;
       align-items: center;

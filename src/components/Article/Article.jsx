@@ -20,9 +20,13 @@ const Article = (props) => {
   return (
     <div className={style.article}>
       <div className={style.heder}>
-        <div className={style.title}>
-          <Link to={`articles/${article.slug}`}>{article.title}</Link>
-          <Like article={article} />
+        <div className={style.hederLeftSide}>
+          <div className={style.titleAndLike}>
+            <Link className={style.title} to={`articles/${article.slug}`}>
+              {article.title}
+            </Link>
+            <Like article={article} />
+          </div>
           <div>{taglist}</div>
         </div>
         <div className={style.user}>

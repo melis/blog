@@ -3,20 +3,38 @@ import axios from 'axios';
 class Api {
   baseUrl = 'https://conduit.productionready.io/api/';
 
-  async getArticles(page = 1) {
+  async getArticles(page = 1, token) {
     return await axios
-      .get(this.baseUrl + `articles?limit=5&offset=${page * 5 - 5}`)
+      .get(
+        this.baseUrl + `articles?limit=5&offset=${page * 5 - 5}`,
+        token
+          ? {
+              headers: {
+                Authorization: `Token ${token}`,
+              },
+            }
+          : null,
+      )
       .then((a) => {
         return a.data;
       })
       .catch((e) => {
+        console.dir(e);
         return { error: e.message };
       });
   }
 
-  async getSlug(slug) {
+  async getSlug(slug, token) {
     return await axios
-      .get(this.baseUrl + `articles/${slug}`)
+      .get(
+        this.baseUrl + `articles/${slug}`,
+
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      )
       .then((a) => {
         return a.data;
       })
@@ -98,6 +116,40 @@ class Api {
       })
       .then((a) => {
         return { error: 'Article deleted!' };
+      })
+      .catch((e) => {
+        console.dir(e);
+        return { error: e.message };
+      });
+  }
+  async favoriteArticle(slug, token) {
+    return await axios
+      .post(
+        this.baseUrl + `articles/${slug}/favorite`,
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      )
+      .then((a) => {
+        return a.data;
+      })
+      .catch((e) => {
+        console.dir(e);
+        return { error: e.message };
+      });
+  }
+  async unFavoriteArticle(slug, token) {
+    return await axios
+      .delete(this.baseUrl + `articles/${slug}/favorite`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      .then((a) => {
+        return a.data;
       })
       .catch((e) => {
         console.dir(e);

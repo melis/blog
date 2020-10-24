@@ -6,11 +6,11 @@ import SlugPage from './SlugPage';
 import { Result } from 'antd';
 
 const Slug = (props) => {
-  const { match, setSlug, slug, loading, error, user, deleteSlug } = props;
+  const { match, setSlug, slug, loading, error, user, deleteSlug, token } = props;
   const { slugName } = match.params;
 
   useEffect(() => {
-    setSlug(slugName);
+    setSlug(slugName, token);
   }, [slugName]);
 
   if (loading) {
@@ -19,7 +19,7 @@ const Slug = (props) => {
   if (error) {
     return <Result status="warning" title={error} />;
   }
-  return <SlugPage article={slug} user={user} deleteSlug={deleteSlug} />;
+  return <SlugPage article={slug} user={user} deleteSlug={deleteSlug} token={token} />;
 };
 
 const mapStateToProps = (state) => {
@@ -28,6 +28,7 @@ const mapStateToProps = (state) => {
     slug: state.slug.slug,
     loading: state.slug.loading,
     error: state.slug.error,
+    token: state.user.user ? state.user.user.token : '',
   };
 };
 export default connect(mapStateToProps, actions)(Slug);

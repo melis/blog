@@ -5,72 +5,14 @@ import Tags from '../Tags/Tags';
 import { connect } from 'react-redux';
 import * as actions from '../../store/slugActions';
 import { withRouter } from 'react-router';
+import ArticleForm from '../ArticleForm/ArticleForm';
 
 const NewArticle = (props) => {
-  const { createSlug, token, history } = props;
-  const { register, handleSubmit, errors, setError } = useForm();
-  const [tags, setTags] = useState([]);
-
-  const onSubmit = (a) => {
-    const newArticle = {
-      ...a,
-      tagList: tags,
-    };
-
-    createSlug(newArticle, token, history);
-  };
-
+  const { createSlug, token } = props;
   return (
     <div className={style.article}>
       <h1>Create new article</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          <div>Title</div>
-          <input
-            className={errors.title ? style.error : ''}
-            name="title"
-            ref={register({
-              required: 'title',
-              minLength: 5,
-              maxLength: 50,
-            })}
-            type="text"
-          />
-          {errors.title && <p>Your {errors.title.message} is required</p>}
-        </label>
-        <label>
-          <div>Short description</div>
-          <input
-            className={errors.description ? style.error : ''}
-            name="description"
-            ref={register({
-              required: 'description',
-              minLength: 10,
-              maxLength: 300,
-            })}
-            type="text"
-          />
-          {errors.description && <p>Your {errors.description.message} is required</p>}
-        </label>
-        <label>
-          <div>Text</div>
-          <textarea
-            className={errors.body ? style.error : ''}
-            name="body"
-            ref={register({
-              required: 'article body',
-              minLength: 10,
-            })}
-          />
-          {errors.body && <p>Your {errors.body.message} is required</p>}
-        </label>
-        <div className={style.tags}>
-          <div>Tags</div>
-          <Tags tags={tags} setTags={setTags} />
-        </div>
-
-        <input type="submit" value="Send" className={style.submit} />
-      </form>
+      <ArticleForm submit={createSlug} token={token} />
     </div>
   );
 };
@@ -79,4 +21,4 @@ const mapStateToProps = (state) => {
     token: state.user.user.token,
   };
 };
-export default withRouter(connect(mapStateToProps, actions)(NewArticle));
+export default connect(mapStateToProps, actions)(NewArticle);
