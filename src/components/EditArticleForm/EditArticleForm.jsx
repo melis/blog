@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import style from './EditArticleForm.module.scss';
 import { useForm } from 'react-hook-form';
 import Tags from '../Tags/Tags';
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 
 const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;

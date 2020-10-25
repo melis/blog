@@ -122,7 +122,6 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        console.dir(e);
         return { error: e.message };
       });
   }
