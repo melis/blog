@@ -28,12 +28,13 @@ class Api {
     return await axios
       .get(
         this.baseUrl + `articles/${slug}`,
-
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        },
+        token
+          ? {
+              headers: {
+                Authorization: `Token ${token}`,
+              },
+            }
+          : null,
       )
       .then((a) => {
         return a.data;
