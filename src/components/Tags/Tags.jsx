@@ -70,7 +70,6 @@ class EditableTagGroup extends React.Component {
   render() {
     const { tags, inputVisible, inputValue } = this.state;
     const tagChild = tags.map(this.forMap);
-    console.log(this.props.tags);
     return (
       <>
         <div style={{ marginBottom: 16 }}>

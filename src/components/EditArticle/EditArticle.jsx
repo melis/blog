@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import style from './EditArticle.module.scss';
 import { connect } from 'react-redux';
 import * as actions from '../../store/slugActions';
-import ArticleForm from '../ArticleForm/ArticleForm';
+import ArticleForm from '../EditArticleForm/EditArticleForm';
 
 const EditArticle = (props) => {
-  const { token, match, setSlug, updSlug, slug } = props;
+  const { user, match, setSlug, updSlug, slug } = props;
   const { slugName } = match.params;
 
   useEffect(() => {
-    setSlug(slugName, token);
+    setSlug(slugName, user.token);
   }, [slugName]);
 
   return (
     <div className={style.article}>
       <h1>Edit article</h1>
-      <ArticleForm token={token} submit={updSlug} slug={slug} />
+      {slug ? <ArticleForm token={user.token} submit={updSlug} slug={slug} /> : null}
     </div>
   );
 };
 const mapStateToProps = (state) => {
   return {
-    token: state.user.user.token,
+    user: state.user.user,
     slug: state.slug.slug,
   };
 };

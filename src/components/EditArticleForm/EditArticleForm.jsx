@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import style from './ArticleForm.module.scss';
+import style from './EditArticleForm.module.scss';
 import { useForm } from 'react-hook-form';
 import Tags from '../Tags/Tags';
 import { withRouter } from 'react-router';
 
 const ArticleForm = (props) => {
-  console.log(props);
   const { token, history, submit, slug } = props;
-  let arr = [];
-  if (slug) {
-    arr = [...slug.tagList];
-  }
-  const { register, handleSubmit, errors, setError } = useForm();
+  const { register, handleSubmit, errors, setError, setValue } = useForm();
   const [tags, setTags] = useState([]);
-
-  useEffect(() => {
-    if (slug) {
-      setTags([...slug.tagList]);
-    }
-  }, [arr.length]);
 
   const onSubmit = (a) => {
     const newArticle = {
       ...a,
       tagList: tags,
     };
-    submit(newArticle, token, history);
+    submit(newArticle, token, history, slug.slug);
   };
+  useEffect(() => {
+    setValue('title', slug.title);
+    setValue('description', slug.description);
+    setValue('body', slug.body);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -72,10 +66,10 @@ const ArticleForm = (props) => {
       </label>
       <div className={style.tags}>
         <div>Tags</div>
-        <Tags tags={tags} setTags={setTags} />
+        <Tags tags={slug.tagList} setTags={setTags} />
       </div>
 
-      <input type="submit" value="Send" className={style.submit} />
+      <input type="submit" value="Save" className={style.submit} />
     </form>
   );
 };

@@ -107,6 +107,25 @@ class Api {
         return { error: e.message };
       });
   }
+  async updateArticle(article, token, slug) {
+    return await axios
+      .put(
+        this.baseUrl + `articles/${slug}`,
+        { article },
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      )
+      .then((a) => {
+        return a.data;
+      })
+      .catch((e) => {
+        console.dir(e);
+        return { error: e.message };
+      });
+  }
   async deleteArticle(slug, token) {
     return await axios
       .delete(this.baseUrl + 'articles/' + slug, {

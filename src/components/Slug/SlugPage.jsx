@@ -4,9 +4,10 @@ import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import { Tag } from 'antd';
 import Like from '../Like/Like';
+import { withRouter } from 'react-router-dom';
 
 const SlugPage = (props) => {
-  const { article, user, deleteSlug } = props;
+  const { article, user, deleteSlug, history } = props;
   const [dell, setDell] = useState(false);
 
   let username = '';
@@ -77,7 +78,7 @@ const SlugPage = (props) => {
             </span>
             <span
               onClick={() => {
-                console.log('edt');
+                history.push(`/articles/${article.slug}/edit`);
               }}
             >
               Edit
@@ -92,4 +93,4 @@ const SlugPage = (props) => {
   );
 };
 
-export default SlugPage;
+export default withRouter(SlugPage);

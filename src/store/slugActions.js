@@ -41,6 +41,22 @@ export const deleteSlug = (slug, token) => {
   };
 };
 
+export const updSlug = (slug, token, history, slugName) => {
+  return (dispatch) => {
+    blogApi.updateArticle(slug, token, slugName).then((a) => {
+      if (a.error) {
+        dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
+      } else {
+        dispatch({
+          type: 'SET_SLUG',
+          slug: a.article,
+        });
+        history.push('/articles/' + a.article.slug);
+      }
+    });
+  };
+};
+
 export const likeArticle = (slug, token, setLike, setLikeCount) => {
   return (dispatch) => {
     blogApi.favoriteArticle(slug, token).then((a) => {

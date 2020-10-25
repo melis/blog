@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import style from './NewArticle.module.scss';
-import { useForm } from 'react-hook-form';
-import Tags from '../Tags/Tags';
 import { connect } from 'react-redux';
 import * as actions from '../../store/slugActions';
-import { withRouter } from 'react-router';
-import ArticleForm from '../ArticleForm/ArticleForm';
+import ArticleForm from '../NewArticleForm/NewArticleForm';
 
 const NewArticle = (props) => {
   const { createSlug, token } = props;
