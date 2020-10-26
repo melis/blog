@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import style from './EditArticleForm.module.scss';
 import { useForm } from 'react-hook-form';
 import Tags from '../Tags/Tags';
-import { Redirect, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 
 const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;
@@ -14,13 +14,15 @@ const ArticleForm = (props) => {
       ...a,
       tagList: tags,
     };
-    submit(newArticle, token, history, slug.slug);
+    submit(newArticle, token, history, slug ? slug.slug : null);
   };
   useEffect(() => {
-    setValue('title', slug.title);
-    setValue('description', slug.description);
-    setValue('body', slug.body);
-  }, []);
+    if (slug) {
+      setValue('title', slug.title);
+      setValue('description', slug.description);
+      setValue('body', slug.body);
+    }
+  }, [slug]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -66,7 +68,7 @@ const ArticleForm = (props) => {
       </label>
       <div className={style.tags}>
         <div>Tags</div>
-        <Tags tags={slug.tagList} setTags={setTags} />
+        <Tags tags={slug ? slug.tagList : []} setTags={setTags} />
       </div>
 
       <input type="submit" value="Save" className={style.submit} />

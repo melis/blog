@@ -31,7 +31,7 @@ const EditUser = (props) => {
           name="username"
           ref={register({
             required: 'username',
-            minLength: 5,
+            minLength: 3,
             maxLength: 20,
           })}
           type="text"
@@ -66,8 +66,8 @@ const EditUser = (props) => {
           name="password"
           ref={register({
             required: 'password',
-            minLength: 6,
-            maxLength: 20,
+            minLength: 8,
+            maxLength: 40,
           })}
           type="password"
         />
@@ -83,7 +83,7 @@ const EditUser = (props) => {
           className={errors.imgUrl && style.error}
           name="image"
           ref={register({})}
-          type="text"
+          type="url"
         />
         {errors.imgUrl && <p>Your {errors.imgUrl.message} is required</p>}
       </label>

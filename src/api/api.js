@@ -19,8 +19,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        console.dir(e);
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
 
@@ -40,7 +39,8 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        return { error: e.message };
+        console.dir(e);
+        return { error: JSON.stringify(e.response.data) };
       });
   }
 
@@ -51,7 +51,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
 
@@ -62,7 +62,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
 
@@ -80,12 +80,10 @@ class Api {
         },
       )
       .then((a) => {
-        console.log(a.data);
         return a.data;
       })
       .catch((e) => {
-        console.dir(e);
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
 
@@ -104,8 +102,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        console.dir(e);
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
   async updateArticle(article, token, slug) {
@@ -123,7 +120,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
   async deleteArticle(slug, token) {
@@ -137,8 +134,7 @@ class Api {
         return { error: 'Article deleted!' };
       })
       .catch((e) => {
-        console.dir(e);
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
   async favoriteArticle(slug, token) {
@@ -156,8 +152,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        console.dir(e);
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
   async unFavoriteArticle(slug, token) {
@@ -171,8 +166,7 @@ class Api {
         return a.data;
       })
       .catch((e) => {
-        console.dir(e);
-        return { error: e.message };
+        return { error: JSON.stringify(e.response.data) };
       });
   }
 }

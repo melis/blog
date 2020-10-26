@@ -28,7 +28,7 @@ const SignUp = (props) => {
           name="username"
           ref={register({
             required: 'username',
-            minLength: 5,
+            minLength: 3,
             maxLength: 20,
           })}
           type="text"
@@ -56,7 +56,7 @@ const SignUp = (props) => {
           ref={register({
             required: 'password',
             minLength: 8,
-            maxLength: 20,
+            maxLength: 40,
           })}
           type="password"
         />
@@ -70,7 +70,7 @@ const SignUp = (props) => {
           ref={register({
             required: 'password',
             minLength: 8,
-            maxLength: 20,
+            maxLength: 40,
           })}
           type="password"
         />

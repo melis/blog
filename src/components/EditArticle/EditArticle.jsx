@@ -15,7 +15,7 @@ const EditArticle = (props) => {
   return (
     <div className={style.article}>
       <h1>Edit article</h1>
-      {slug ? <ArticleForm token={user.token} submit={updSlug} slug={slug} /> : null}
+      <ArticleForm token={user.token} submit={updSlug} slug={slug} />
     </div>
   );
 };

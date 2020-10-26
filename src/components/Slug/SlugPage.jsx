@@ -13,10 +13,12 @@ const SlugPage = (props) => {
   let username = '';
   if (user) username = user.username;
 
-  const date = format(new Date(article.createdAt), 'MMMM,dd,yyyy');
-  const taglist = article.tagList.map((tag) => {
-    return <Tag key={tag}>{tag}</Tag>;
-  });
+  const date = article ? format(new Date(article.createdAt), 'MMMM,dd,yyyy') : null;
+  const taglist = article
+    ? article.tagList.map((tag) => {
+        return <Tag key={tag}>{tag}</Tag>;
+      })
+    : [];
   return (
     <div className={style.page}>
       <div className={style.heder}>

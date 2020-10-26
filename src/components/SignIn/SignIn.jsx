@@ -23,7 +23,7 @@ const SignIn = (props) => {
           name="email"
           ref={register({
             required: 'email',
-            maxLength: 20,
+            maxLength: 50,
           })}
           type="text"
         />
@@ -36,7 +36,7 @@ const SignIn = (props) => {
           name="password"
           ref={register({
             required: 'password',
-            maxLength: 20,
+            maxLength: 40,
           })}
           type="password"
         />

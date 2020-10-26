@@ -4,6 +4,7 @@ export const setSlug = (slugName, token) => {
   return (dispatch) => {
     dispatch({ type: 'SET_SLUG_LOADING', loading: true });
     blogApi.getSlug(slugName, token).then((a) => {
+      console.log(a);
       if (a.error) {
         dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
       } else {

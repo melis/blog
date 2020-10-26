@@ -2,7 +2,7 @@ import React from 'react';
 import style from './NewArticle.module.scss';
 import { connect } from 'react-redux';
 import * as actions from '../../store/slugActions';
-import ArticleForm from '../NewArticleForm/NewArticleForm';
+import ArticleForm from '../EditArticleForm/EditArticleForm';
 
 const NewArticle = (props) => {
   const { createSlug, token } = props;
