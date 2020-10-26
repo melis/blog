@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Result } from 'antd';
+import PropTypes from 'prop-types';
 import Pagin from '../Pagination/Pagination';
 import Articles from '../Articles/Articles';
 import style from './Content.module.scss';
 import Spinner from '../Spinner/Spinner';
-import { connect } from 'react-redux';
-import { Result } from 'antd';
 
 import * as actions from '../../store/articlesActions';
 
@@ -35,6 +36,13 @@ const mapStateToProps = (state) => {
     error: state.articles.error,
     token: state.user.user ? state.user.user.token : '',
   };
+};
+
+Content.propTypes = {
+  loading: PropTypes.bool,
+  setArticles: PropTypes.func,
+  error: PropTypes.string,
+  token: PropTypes.string,
 };
 
 export default connect(mapStateToProps, actions)(Content);

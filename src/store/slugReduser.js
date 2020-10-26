@@ -1,4 +1,4 @@
-const initialState = { slug: null, loading: true, error: true };
+const initialState = { slug: null, loading: true, error: '' };
 
 const slug = (state = initialState, action) => {
   switch (action.type) {

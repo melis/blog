@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import style from './EditUser.module.scss';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import style from './EditUser.module.scss';
 import * as actions from '../../store/userActions';
 
 const EditUser = (props) => {
   const { error, user, updUser } = props;
 
-  const { register, handleSubmit, errors, setError } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [userName, setUserName] = useState(user.username);
   const [userEmail, setUserEmail] = useState(user.email);
   const [userImgUrl, setUserImgUrl] = useState(user.image);
@@ -98,5 +99,10 @@ const mapStateToProps = (state) => {
     error: state.user.error,
     user: state.user.user,
   };
+};
+EditUser.propTypes = {
+  error: PropTypes.string,
+  user: PropTypes.object,
+  updUser: PropTypes.func,
 };
 export default connect(mapStateToProps, actions)(EditUser);

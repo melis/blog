@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
-import style from './SignIn.module.scss';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import style from './SignIn.module.scss';
 import * as actions from '../../store/userActions';
 
 const SignIn = (props) => {
   const { register, handleSubmit, errors } = useForm();
-  const { setUser, error, resetError } = props;
+  const { setUser, error } = props;
 
   const onSubmit = (data) => {
     setUser(data);
@@ -54,5 +55,9 @@ const mapStateToProps = (state) => {
   return {
     error: state.user.error,
   };
+};
+SignIn.propTypes = {
+  setUser: PropTypes.func,
+  error: PropTypes.string,
 };
 export default connect(mapStateToProps, actions)(SignIn);

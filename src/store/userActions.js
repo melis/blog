@@ -17,7 +17,7 @@ export const setUser = (userDate) => {
 };
 
 export const createUser = (newUser) => {
-  let user = {
+  const user = {
     email: newUser.email,
     username: newUser.username,
     password: newUser.password_1,

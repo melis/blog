@@ -1,7 +1,8 @@
 import React from 'react';
 import { Pagination } from 'antd';
-import style from './Pagination.module.scss';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import style from './Pagination.module.scss';
 import * as actions from '../../store/articlesActions';
 
 const Pagin = (props) => {
@@ -30,5 +31,10 @@ const mapStateToProps = (state) => {
     token: state.user.user ? state.user.user.token : '',
   };
 };
-
+Pagin.propTypes = {
+  page: PropTypes.number,
+  total: PropTypes.number,
+  setArticles: PropTypes.func,
+  token: PropTypes.string,
+};
 export default connect(mapStateToProps, actions)(Pagin);

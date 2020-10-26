@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Tag, Statistic } from 'antd';
+import { Statistic } from 'antd';
 import { HeartOutlined, HeartTwoTone } from '@ant-design/icons';
-import style from './Like.module.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../store/slugActions';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import * as actions from '../../store/slugActions';
 
 const Like = (props) => {
   const { article, token, likeArticle, dezLikeArticle, history } = props;
@@ -50,4 +49,10 @@ Like.propTypes = {
   token: PropTypes.string,
 };
 
+Like.propTypes = {
+  article: PropTypes.object,
+  likeArticle: PropTypes.func,
+  dezLikeArticle: PropTypes.func,
+  history: PropTypes.object,
+};
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Like));

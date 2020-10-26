@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import style from './EditArticle.module.scss';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import style from './EditArticle.module.scss';
 import * as actions from '../../store/slugActions';
 import ArticleForm from '../EditArticleForm/EditArticleForm';
 
@@ -24,5 +25,12 @@ const mapStateToProps = (state) => {
     user: state.user.user,
     slug: state.slug.slug,
   };
+};
+EditArticle.propTypes = {
+  user: PropTypes.object,
+  match: PropTypes.object,
+  setSlug: PropTypes.func,
+  updSlug: PropTypes.func,
+  slug: PropTypes.object,
 };
 export default connect(mapStateToProps, actions)(EditArticle);

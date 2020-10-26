@@ -8,7 +8,7 @@ const initialState = {
 
 const articles = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_ARTICLES":
+    case 'SET_ARTICLES':
       return {
         ...state,
         articles: action.articles,
@@ -17,9 +17,9 @@ const articles = (state = initialState, action) => {
         error: null,
         page: action.page,
       };
-    case "SET_LOADING":
+    case 'SET_LOADING':
       return { ...state, loading: action.loading };
-    case "SET_ERROR":
+    case 'SET_ERROR':
       return { ...state, error: action.error, loading: false };
     default:
       return state;

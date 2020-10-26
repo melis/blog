@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import style from './EditArticleForm.module.scss';
 import { useForm } from 'react-hook-form';
-import Tags from '../Tags/Tags';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+import style from './EditArticleForm.module.scss';
+import Tags from '../Tags/Tags';
 
 const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;
-  const { register, handleSubmit, errors, setError, setValue } = useForm();
+  const { register, handleSubmit, errors, setValue } = useForm();
   const [tags, setTags] = useState([]);
 
   const onSubmit = (a) => {
@@ -75,5 +76,10 @@ const ArticleForm = (props) => {
     </form>
   );
 };
-
+ArticleForm.propTypes = {
+  token: PropTypes.string,
+  history: PropTypes.object,
+  submit: PropTypes.func,
+  slug: PropTypes.object,
+};
 export default withRouter(ArticleForm);

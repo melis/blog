@@ -6,7 +6,7 @@ class Api {
   async getArticles(page = 1, token) {
     return await axios
       .get(
-        this.baseUrl + `articles?limit=5&offset=${page * 5 - 5}`,
+        `${this.baseUrl}articles?limit=5&offset=${page * 5 - 5}`,
         token
           ? {
               headers: {
@@ -26,7 +26,7 @@ class Api {
   async getSlug(slug, token) {
     return await axios
       .get(
-        this.baseUrl + `articles/${slug}`,
+        `${this.baseUrl}articles/${slug}`,
         token
           ? {
               headers: {
@@ -46,7 +46,7 @@ class Api {
 
   async signIn(user) {
     return await axios
-      .post(this.baseUrl + 'users/login', { user })
+      .post(`${this.baseUrl}users/login`, { user })
       .then((a) => {
         return a.data;
       })
@@ -57,7 +57,7 @@ class Api {
 
   async createAccaunt(user) {
     return await axios
-      .post(this.baseUrl + 'users', { user })
+      .post(`${this.baseUrl}users`, { user })
       .then((a) => {
         return a.data;
       })
@@ -69,7 +69,7 @@ class Api {
   async updUser(user, token) {
     return await axios
       .put(
-        this.baseUrl + 'user',
+        `${this.baseUrl}user`,
         {
           user,
         },
@@ -90,7 +90,7 @@ class Api {
   async createArticle(article, token) {
     return await axios
       .post(
-        this.baseUrl + 'articles',
+        `${this.baseUrl}articles`,
         { article },
         {
           headers: {
@@ -105,10 +105,11 @@ class Api {
         return { error: JSON.stringify(e.response.data) };
       });
   }
+
   async updateArticle(article, token, slug) {
     return await axios
       .put(
-        this.baseUrl + `articles/${slug}`,
+        `${this.baseUrl}articles/${slug}`,
         { article },
         {
           headers: {
@@ -123,9 +124,10 @@ class Api {
         return { error: JSON.stringify(e.response.data) };
       });
   }
+
   async deleteArticle(slug, token) {
     return await axios
-      .delete(this.baseUrl + 'articles/' + slug, {
+      .delete(`${this.baseUrl}articles/${slug}`, {
         headers: {
           Authorization: `Token ${token}`,
         },
@@ -137,10 +139,11 @@ class Api {
         return { error: JSON.stringify(e.response.data) };
       });
   }
+
   async favoriteArticle(slug, token) {
     return await axios
       .post(
-        this.baseUrl + `articles/${slug}/favorite`,
+        `${this.baseUrl}articles/${slug}/favorite`,
         {},
         {
           headers: {
@@ -155,9 +158,10 @@ class Api {
         return { error: JSON.stringify(e.response.data) };
       });
   }
+
   async unFavoriteArticle(slug, token) {
     return await axios
-      .delete(this.baseUrl + `articles/${slug}/favorite`, {
+      .delete(`${this.baseUrl}articles/${slug}/favorite`, {
         headers: {
           Authorization: `Token ${token}`,
         },

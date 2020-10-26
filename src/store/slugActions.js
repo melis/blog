@@ -28,7 +28,7 @@ export const createSlug = (article, token, history) => {
           type: 'SET_SLUG',
           slug: a.article,
         });
-        history.push('/articles/' + a.article.slug);
+        history.push(`/articles/${a.article.slug}`);
       }
     });
   };
@@ -47,13 +47,13 @@ export const updSlug = (slug, token, history, slugName) => {
     blogApi.updateArticle(slug, token, slugName).then((a) => {
       if (a.error) {
         dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
-        history.push('/articles/' + slugName);
+        history.push(`/articles/${slugName}`);
       } else {
         dispatch({
           type: 'SET_SLUG',
           slug: a.article,
         });
-        history.push('/articles/' + a.article.slug);
+        history.push(`/articles/${a.article.slug}`);
       }
     });
   };

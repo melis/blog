@@ -1,9 +1,10 @@
 import React from 'react';
-import style from './Heder.module.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../store/userActions';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import * as actions from '../../store/userActions';
+import style from './Heder.module.scss';
 
 const User = (props) => {
   const { user, logOut } = props;
@@ -35,6 +36,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logOut,
   };
+};
+User.propTypes = {
+  user: PropTypes.object,
+  logOut: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

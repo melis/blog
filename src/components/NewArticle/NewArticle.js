@@ -1,6 +1,7 @@
 import React from 'react';
-import style from './NewArticle.module.scss';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import style from './NewArticle.module.scss';
 import * as actions from '../../store/slugActions';
 import ArticleForm from '../EditArticleForm/EditArticleForm';
 
@@ -17,5 +18,9 @@ const mapStateToProps = (state) => {
   return {
     token: state.user.user.token,
   };
+};
+NewArticle.propTypes = {
+  createSlug: PropTypes.func,
+  token: PropTypes.string,
 };
 export default connect(mapStateToProps, actions)(NewArticle);

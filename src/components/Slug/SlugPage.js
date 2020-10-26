@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import style from './SlugPage.module.scss';
 import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import { Tag } from 'antd';
-import Like from '../Like/Like';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Like from '../Like/Like';
+import style from './SlugPage.module.scss';
 
 const SlugPage = (props) => {
   const { article, user, deleteSlug, history } = props;
@@ -58,7 +59,7 @@ const SlugPage = (props) => {
                   }}
                   className={style.modal}
                 >
-                  <div></div>
+                  <div />
                   <div> Are tou sure to delete this article?</div>
                   <span
                     onClick={() => {
@@ -94,5 +95,10 @@ const SlugPage = (props) => {
     </div>
   );
 };
-
+SlugPage.propTypes = {
+  article: PropTypes.object,
+  user: PropTypes.object,
+  deleteSlug: PropTypes.func,
+  history: PropTypes.object,
+};
 export default withRouter(SlugPage);

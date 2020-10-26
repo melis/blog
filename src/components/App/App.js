@@ -1,12 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './App.module.scss';
 import Heder from '../Heder/Heder';
 import Content from '../Content/Content';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Slug from '../Slug/Slug';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
-import { connect } from 'react-redux';
 import EditUser from '../EditUser/EditUser';
 import NewArticle from '../NewArticle/NewArticle';
 import EditArticle from '../EditArticle/EditArticle';
@@ -41,5 +42,7 @@ const mapStateToProps = (state) => {
     loggedIn: !!state.user.user,
   };
 };
-
+App.propTypes = {
+  loggedIn: PropTypes.bool,
+};
 export default connect(mapStateToProps)(App);

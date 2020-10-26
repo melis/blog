@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import style from './SignUp.module.scss';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../store/userActions';
 import { Checkbox } from 'antd';
+import PropTypes from 'prop-types';
+import * as actions from '../../store/userActions';
+import style from './SignUp.module.scss';
 
 const SignUp = (props) => {
   const { error, createUser } = props;
@@ -98,5 +99,9 @@ const mapStateToProps = (state) => {
   return {
     error: state.user.error,
   };
+};
+SignUp.propTypes = {
+  error: PropTypes.string,
+  createUser: PropTypes.func,
 };
 export default connect(mapStateToProps, actions)(SignUp);

@@ -1,12 +1,13 @@
 import React from 'react';
-import style from './Article.module.scss';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { Tag } from 'antd';
+import PropTypes from 'prop-types';
+import style from './Article.module.scss';
 import Like from '../Like/Like';
 
 const truncate = (text) => {
-  if (text.length > 185) return text.slice(0, 185) + '...';
+  if (text.length > 185) return `${text.slice(0, 185)}...`;
   return text;
 };
 
@@ -49,5 +50,8 @@ const Article = (props) => {
       <div className={style.body}>{truncate(article.description)}</div>
     </div>
   );
+};
+Article.propTypes = {
+  article: PropTypes.object,
 };
 export default Article;

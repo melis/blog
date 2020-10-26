@@ -1,7 +1,8 @@
 import React from 'react';
-import style from './Heder.module.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import style from './Heder.module.scss';
 import Login from './Login';
 import User from './User';
 
@@ -24,5 +25,7 @@ const mapStateToProps = (state) => {
     userOn: !!state.user.user,
   };
 };
-
+Heder.propTypes = {
+  userOn: PropTypes.bool,
+};
 export default connect(mapStateToProps)(Heder);
