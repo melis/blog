@@ -5,11 +5,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 
 class EditableTagGroup extends React.Component {
-  propsTypes = {
-    tags: PropTypes.array,
-    setTags: PropTypes.func,
-  };
-
   state = {
     tags: [...this.props.tags],
     inputVisible: false,
@@ -71,6 +66,11 @@ class EditableTagGroup extends React.Component {
         {tagElem}
       </span>
     );
+  };
+
+  static propsTypes = {
+    tags: PropTypes.array,
+    setTags: PropTypes.func,
   };
 
   render() {

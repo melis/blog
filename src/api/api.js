@@ -155,6 +155,4 @@ class Api {
 }
 
 const blogApi = new Api();
-window.blogApi = blogApi;
-
 export default blogApi;
