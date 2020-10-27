@@ -51,6 +51,11 @@ const SlugPage = props => {
         {article.author.username === username ? (
           <div className={style.edit}>
             <span
+              onKeyDown={() => {
+                setDell(true);
+              }}
+              role="button"
+              tabIndex={0}
               onClick={() => {
                 setDell(true);
               }}
@@ -58,6 +63,11 @@ const SlugPage = props => {
               Delete
               {dell ? (
                 <span
+                  onKeyDown={event => {
+                    event.stopPropagation();
+                  }}
+                  role="button"
+                  tabIndex={0}
                   onClick={event => {
                     event.stopPropagation();
                   }}
@@ -66,6 +76,11 @@ const SlugPage = props => {
                   <div />
                   <div> Are tou sure to delete this article?</div>
                   <span
+                    onKeyDown={() => {
+                      setDell(false);
+                    }}
+                    role="button"
+                    tabIndex={0}
                     onClick={() => {
                       setDell(false);
                     }}
@@ -73,6 +88,12 @@ const SlugPage = props => {
                     No
                   </span>
                   <span
+                    onKeyDown={() => {
+                      setDell(false);
+                      deleteSlug(article.slug, user.token);
+                    }}
+                    role="button"
+                    tabIndex={0}
                     onClick={() => {
                       setDell(false);
                       deleteSlug(article.slug, user.token);
@@ -84,6 +105,11 @@ const SlugPage = props => {
               ) : null}
             </span>
             <span
+              onKeyDown={() => {
+                history.push(`/articles/${article.slug}/edit`);
+              }}
+              role="button"
+              tabIndex={0}
               onClick={() => {
                 history.push(`/articles/${article.slug}/edit`);
               }}

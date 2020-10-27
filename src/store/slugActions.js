@@ -4,7 +4,6 @@ export const setSlug = (slugName, token) => {
   return dispatch => {
     dispatch({ type: 'SET_SLUG_LOADING', loading: true });
     blogApi.getSlug(slugName, token).then(a => {
-      console.log(a);
       if (a.error) {
         dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
       } else {
@@ -60,7 +59,7 @@ export const updSlug = (slug, token, history, slugName) => {
 };
 
 export const likeArticle = (slug, token, setLike, setLikeCount) => {
-  return dispatch => {
+  return () => {
     blogApi.favoriteArticle(slug, token).then(a => {
       setLike(true);
       setLikeCount(a.article.favoritesCount);
@@ -69,7 +68,7 @@ export const likeArticle = (slug, token, setLike, setLikeCount) => {
 };
 
 export const dezLikeArticle = (slug, token, setLike, setLikeCount) => {
-  return dispatch => {
+  return () => {
     blogApi.unFavoriteArticle(slug, token).then(a => {
       setLike(false);
       setLikeCount(a.article.favoritesCount);

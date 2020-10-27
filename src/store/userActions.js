@@ -41,7 +41,6 @@ export const updUser = (user, token) => {
   return dispatch => {
     dispatch({ type: 'SET_USER_LOADING', loading: true });
     blogApi.updUser(user, token).then(a => {
-      console.log(a);
       if (a.error) {
         dispatch({ type: 'SET_USER_ERROR', error: a.error });
       } else {

@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../store/slugActions';
+import style from './Like.module.scss';
 
 const Like = props => {
   const { article, token, likeArticle, dezLikeArticle, history } = props;
@@ -24,7 +25,13 @@ const Like = props => {
   };
 
   return (
-    <div onClick={handleClick} onKeyDown={handleClick} role="button">
+    <div
+      onClick={handleClick}
+      onKeyDown={handleClick}
+      role="button"
+      tabIndex={0}
+      className={style.like}
+    >
       <Statistic
         valueStyle={{ fontSize: '14px', cursor: 'pointer' }}
         value={likeCount}

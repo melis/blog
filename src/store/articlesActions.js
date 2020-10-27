@@ -17,3 +17,4 @@ export const setArticles = (page, token) => {
     });
   };
 };
+export default setArticles;

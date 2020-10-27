@@ -70,7 +70,7 @@ const EditUser = props => {
           name="password"
           ref={register({
             required: 'password',
-            minLength: 8,
+            minLength: 6,
             maxLength: 40,
           })}
           type="password"
