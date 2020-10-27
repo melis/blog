@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import style from './EditArticleForm.module.scss';
 import Tags from '../Tags/Tags';
 
-const ArticleForm = (props) => {
+const ArticleForm = props => {
   const { token, history, submit, slug } = props;
   const { register, handleSubmit, errors, setValue } = useForm();
   const [tags, setTags] = useState([]);
 
-  const onSubmit = (a) => {
+  const onSubmit = a => {
     const newArticle = {
       ...a,
       tagList: tags,

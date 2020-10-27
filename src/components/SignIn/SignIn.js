@@ -27,7 +27,7 @@ const SignIn = props => {
             required: 'email',
             maxLength: 50,
           })}
-          type="text"
+          type="email"
         />
         {errors.email && <p>Your {errors.email.message} is required</p>}
       </label>

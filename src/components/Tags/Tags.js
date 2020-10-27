@@ -11,6 +11,11 @@ class EditableTagGroup extends React.Component {
     inputValue: '',
   };
 
+  static propTypes = {
+    tags: PropTypes.array,
+    setTags: PropTypes.func,
+  };
+
   componentDidUpdate() {
     this.props.setTags(this.state.tags);
   }
@@ -18,7 +23,9 @@ class EditableTagGroup extends React.Component {
   handleClose = removedTag => {
     const tags = this.state.tags.filter(tag => tag !== removedTag);
 
-    this.setState({ tags });
+    this.setState(() => {
+      return { tags };
+    });
   };
 
   showInput = () => {
@@ -68,15 +75,10 @@ class EditableTagGroup extends React.Component {
     );
   };
 
-  static propsTypes = {
-    tags: PropTypes.array,
-    setTags: PropTypes.func,
-  };
-
   render() {
     const { tags, inputVisible, inputValue } = this.state;
     const tagChild = tags.map(this.forMap);
-
+    // const { setTags } = this.props;
     return (
       <>
         <div style={{ marginBottom: 16 }}>
