@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import listCreator from './listCreator';
 
-const Articles = (props) => {
+const Articles = props => {
   const { articles } = props;
 
   const list = listCreator(articles);
   return <div>{list}</div>;
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     articles: state.articles.articles,
   };

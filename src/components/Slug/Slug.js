@@ -6,7 +6,7 @@ import * as actions from '../../store/slugActions';
 import Spinner from '../Spinner/Spinner';
 import SlugPage from './SlugPage';
 
-const Slug = (props) => {
+const Slug = props => {
   const { match, setSlug, slug, loading, error, user, deleteSlug, token } = props;
   const { slugName } = match.params;
 
@@ -23,7 +23,7 @@ const Slug = (props) => {
   return <SlugPage article={slug} user={user} deleteSlug={deleteSlug} token={token} />;
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: state.user.user,
     slug: state.slug.slug,

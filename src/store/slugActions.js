@@ -1,9 +1,9 @@
 import blogApi from '../api/api';
 
 export const setSlug = (slugName, token) => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({ type: 'SET_SLUG_LOADING', loading: true });
-    blogApi.getSlug(slugName, token).then((a) => {
+    blogApi.getSlug(slugName, token).then(a => {
       console.log(a);
       if (a.error) {
         dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
@@ -18,9 +18,9 @@ export const setSlug = (slugName, token) => {
 };
 
 export const createSlug = (article, token, history) => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({ type: 'SET_SLUG_LOADING', loading: true });
-    blogApi.createArticle(article, token).then((a) => {
+    blogApi.createArticle(article, token).then(a => {
       if (a.error) {
         dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
       } else {
@@ -35,16 +35,16 @@ export const createSlug = (article, token, history) => {
 };
 
 export const deleteSlug = (slug, token) => {
-  return (dispatch) => {
-    blogApi.deleteArticle(slug, token).then((a) => {
+  return dispatch => {
+    blogApi.deleteArticle(slug, token).then(a => {
       dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
     });
   };
 };
 
 export const updSlug = (slug, token, history, slugName) => {
-  return (dispatch) => {
-    blogApi.updateArticle(slug, token, slugName).then((a) => {
+  return dispatch => {
+    blogApi.updateArticle(slug, token, slugName).then(a => {
       if (a.error) {
         dispatch({ type: 'SET_SLUG_ERROR', error: a.error });
         history.push(`/articles/${slugName}`);
@@ -60,8 +60,8 @@ export const updSlug = (slug, token, history, slugName) => {
 };
 
 export const likeArticle = (slug, token, setLike, setLikeCount) => {
-  return (dispatch) => {
-    blogApi.favoriteArticle(slug, token).then((a) => {
+  return dispatch => {
+    blogApi.favoriteArticle(slug, token).then(a => {
       setLike(true);
       setLikeCount(a.article.favoritesCount);
     });
@@ -69,8 +69,8 @@ export const likeArticle = (slug, token, setLike, setLikeCount) => {
 };
 
 export const dezLikeArticle = (slug, token, setLike, setLikeCount) => {
-  return (dispatch) => {
-    blogApi.unFavoriteArticle(slug, token).then((a) => {
+  return dispatch => {
+    blogApi.unFavoriteArticle(slug, token).then(a => {
       setLike(false);
       setLikeCount(a.article.favoritesCount);
     });

@@ -9,7 +9,7 @@ import Spinner from '../Spinner/Spinner';
 
 import * as actions from '../../store/articlesActions';
 
-const Content = (props) => {
+const Content = props => {
   const { loading, setArticles, error, token } = props;
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Content = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     loading: state.articles.loading,
     error: state.articles.error,

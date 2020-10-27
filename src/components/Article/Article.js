@@ -6,16 +6,16 @@ import PropTypes from 'prop-types';
 import style from './Article.module.scss';
 import Like from '../Like/Like';
 
-const truncate = (text) => {
+const truncate = text => {
   if (text.length > 185) return `${text.slice(0, 185)}...`;
   return text;
 };
 
-const Article = (props) => {
+const Article = props => {
   const { article } = props;
 
   const date = format(new Date(article.createdAt), 'MMMM,dd,yyyy');
-  const taglist = article.tagList.map((tag) => {
+  const taglist = article.tagList.map(tag => {
     return <Tag key={tag}>{tag}</Tag>;
   });
   return (

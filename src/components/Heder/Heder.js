@@ -6,7 +6,7 @@ import style from './Heder.module.scss';
 import Login from './Login';
 import User from './User';
 
-const Heder = (props) => {
+const Heder = props => {
   const { userOn } = props;
 
   return (
@@ -20,7 +20,7 @@ const Heder = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     userOn: !!state.user.user,
   };

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import style from './EditUser.module.scss';
 import * as actions from '../../store/userActions';
 
-const EditUser = (props) => {
+const EditUser = props => {
   const { error, user, updUser } = props;
 
   const { register, handleSubmit, errors } = useForm();
@@ -14,17 +14,18 @@ const EditUser = (props) => {
   const [userImgUrl, setUserImgUrl] = useState(user.image);
   const [userPassword, setUserPassword] = useState('');
 
-  const onSubmit = (a) => {
+  const onSubmit = a => {
     setUserPassword('');
     updUser(a, user.token);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.editUser}>
       <div className={style.title}>Edit profile</div>
-      <label>
+      <label htmlFor="1">
         <div>Username</div>
         <input
-          onChange={(a) => {
+          id="1"
+          onChange={a => {
             setUserName(a.target.value);
           }}
           className={errors.userName && style.error}
@@ -39,10 +40,11 @@ const EditUser = (props) => {
         />
         {errors.username && <p>Your {errors.username.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="2">
         <div>Email addres</div>
         <input
-          onChange={(a) => {
+          id="2"
+          onChange={a => {
             setUserEmail(a.target.value);
           }}
           value={userEmail}
@@ -56,10 +58,11 @@ const EditUser = (props) => {
         />
         {errors.email && <p>Your {errors.email.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="3">
         <div>New password</div>
         <input
-          onChange={(a) => {
+          id="3"
+          onChange={a => {
             setUserPassword(a.target.value);
           }}
           value={userPassword}
@@ -74,10 +77,11 @@ const EditUser = (props) => {
         />
         {errors.password && <p>Your {errors.password.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="4">
         <div>Avatar image (url)</div>
         <input
-          onChange={(a) => {
+          id="4"
+          onChange={a => {
             setUserImgUrl(a.target.value);
           }}
           value={userImgUrl}
@@ -94,7 +98,7 @@ const EditUser = (props) => {
     </form>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     error: state.user.error,
     user: state.user.user,

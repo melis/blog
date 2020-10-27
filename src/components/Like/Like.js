@@ -7,25 +7,24 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../store/slugActions';
 
-const Like = (props) => {
+const Like = props => {
   const { article, token, likeArticle, dezLikeArticle, history } = props;
   const [like, setLike] = useState(article.favorited);
   const [likeCount, setLikeCount] = useState(article.favoritesCount);
+  const handleClick = () => {
+    if (token) {
+      if (like) {
+        dezLikeArticle(article.slug, token, setLike, setLikeCount);
+      } else {
+        likeArticle(article.slug, token, setLike, setLikeCount);
+      }
+    } else {
+      history.push('/sign-in');
+    }
+  };
 
   return (
-    <div
-      onClick={() => {
-        if (token) {
-          if (like) {
-            dezLikeArticle(article.slug, token, setLike, setLikeCount);
-          } else {
-            likeArticle(article.slug, token, setLike, setLikeCount);
-          }
-        } else {
-          history.push('/sign-in');
-        }
-      }}
-    >
+    <div onClick={handleClick} onKeyDown={handleClick} role="button">
       <Statistic
         valueStyle={{ fontSize: '14px', cursor: 'pointer' }}
         value={likeCount}
@@ -35,11 +34,11 @@ const Like = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   const { likeArticle, dezLikeArticle } = bindActionCreators(actions, dispatch);
   return { likeArticle, dezLikeArticle };
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     token: state.user.user ? state.user.user.token : '',
   };
@@ -47,9 +46,6 @@ const mapStateToProps = (state) => {
 
 Like.propTypes = {
   token: PropTypes.string,
-};
-
-Like.propTypes = {
   article: PropTypes.object,
   likeArticle: PropTypes.func,
   dezLikeArticle: PropTypes.func,

@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import style from './EditArticleForm.module.scss';
 import Tags from '../Tags/Tags';
 
-const ArticleForm = (props) => {
+const ArticleForm = props => {
   const { token, history, submit, slug } = props;
   const { register, handleSubmit, errors, setValue } = useForm();
   const [tags, setTags] = useState([]);
 
-  const onSubmit = (a) => {
+  const onSubmit = a => {
     const newArticle = {
       ...a,
       tagList: tags,
@@ -27,9 +27,10 @@ const ArticleForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
+      <label htmlFor="1">
         <div>Title</div>
         <input
+          id="1"
           className={errors.title ? style.error : ''}
           name="title"
           ref={register({
@@ -41,9 +42,10 @@ const ArticleForm = (props) => {
         />
         {errors.title && <p>Your {errors.title.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="2">
         <div>Short description</div>
         <input
+          id="2"
           className={errors.description ? style.error : ''}
           name="description"
           ref={register({
@@ -55,9 +57,10 @@ const ArticleForm = (props) => {
         />
         {errors.description && <p>Your {errors.description.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="3">
         <div>Text</div>
         <textarea
+          id="3"
           className={errors.body ? style.error : ''}
           name="body"
           ref={register({

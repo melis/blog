@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 import * as actions from '../../store/userActions';
 import style from './SignUp.module.scss';
 
-const SignUp = (props) => {
+const SignUp = props => {
   const { error, createUser } = props;
   const { register, handleSubmit, errors, setError } = useForm();
   const [chek, setChek] = useState(false);
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     if (data.password_1 === data.password_2) {
       createUser(data);
     } else {
@@ -22,9 +22,10 @@ const SignUp = (props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.signUp}>
       <div className={style.title}>Create new accaunt</div>
-      <label>
+      <label htmlFor="1">
         <div>Username</div>
         <input
+          id="1"
           className={errors.username && style.error}
           name="username"
           ref={register({
@@ -36,9 +37,10 @@ const SignUp = (props) => {
         />
         {errors.username && <p>Your {errors.username.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="2">
         <div>Email addres</div>
         <input
+          id="2"
           className={errors.email && style.error}
           name="email"
           ref={register({
@@ -49,9 +51,10 @@ const SignUp = (props) => {
         />
         {errors.email && <p>Your {errors.email.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="3">
         <div>Password</div>
         <input
+          id="3"
           className={errors.password_1 && style.error}
           name="password_1"
           ref={register({
@@ -63,9 +66,10 @@ const SignUp = (props) => {
         />
         {errors.password_1 && <p>Your {errors.password_1.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="4">
         <div>Repeat password</div>
         <input
+          id="4"
           className={errors.password_2 && style.error}
           name="password_2"
           ref={register({
@@ -80,7 +84,7 @@ const SignUp = (props) => {
       {error ? <p>{error}</p> : null}
       <Checkbox
         required
-        onChange={(a) => {
+        onChange={a => {
           setChek(a.target.checked);
         }}
         className={style.chekbox}
@@ -95,7 +99,7 @@ const SignUp = (props) => {
     </form>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     error: state.user.error,
   };

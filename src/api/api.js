@@ -15,10 +15,10 @@ class Api {
             }
           : null,
       )
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -35,10 +35,10 @@ class Api {
             }
           : null,
       )
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         console.dir(e);
         return { error: JSON.stringify(e.response.data) };
       });
@@ -47,10 +47,10 @@ class Api {
   async signIn(user) {
     return await axios
       .post(`${this.baseUrl}users/login`, { user })
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -58,10 +58,10 @@ class Api {
   async createAccaunt(user) {
     return await axios
       .post(`${this.baseUrl}users`, { user })
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -79,10 +79,10 @@ class Api {
           },
         },
       )
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -98,10 +98,10 @@ class Api {
           },
         },
       )
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -117,10 +117,10 @@ class Api {
           },
         },
       )
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -132,10 +132,10 @@ class Api {
           Authorization: `Token ${token}`,
         },
       })
-      .then((a) => {
+      .then(a => {
         return { error: 'Article deleted!' };
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -151,10 +151,10 @@ class Api {
           },
         },
       )
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }
@@ -166,10 +166,10 @@ class Api {
           Authorization: `Token ${token}`,
         },
       })
-      .then((a) => {
+      .then(a => {
         return a.data;
       })
-      .catch((e) => {
+      .catch(e => {
         return { error: JSON.stringify(e.response.data) };
       });
   }

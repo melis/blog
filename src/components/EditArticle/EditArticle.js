@@ -5,7 +5,7 @@ import style from './EditArticle.module.scss';
 import * as actions from '../../store/slugActions';
 import ArticleForm from '../EditArticleForm/EditArticleForm';
 
-const EditArticle = (props) => {
+const EditArticle = props => {
   const { user, match, setSlug, updSlug, slug } = props;
   const { slugName } = match.params;
 
@@ -20,7 +20,7 @@ const EditArticle = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: state.user.user,
     slug: state.slug.slug,

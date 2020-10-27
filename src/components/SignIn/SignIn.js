@@ -6,20 +6,21 @@ import PropTypes from 'prop-types';
 import style from './SignIn.module.scss';
 import * as actions from '../../store/userActions';
 
-const SignIn = (props) => {
+const SignIn = props => {
   const { register, handleSubmit, errors } = useForm();
   const { setUser, error } = props;
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     setUser(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.signIn}>
       <div className={style.title}>Sign In</div>
-      <label>
+      <label htmlFor="1">
         <div>Email addres</div>
         <input
+          id="1"
           className={errors.email && style.error}
           name="email"
           ref={register({
@@ -30,9 +31,10 @@ const SignIn = (props) => {
         />
         {errors.email && <p>Your {errors.email.message} is required</p>}
       </label>
-      <label>
+      <label htmlFor="2">
         <div>Password</div>
         <input
+          id="2"
           className={errors.password && style.error}
           name="password"
           ref={register({
@@ -46,12 +48,12 @@ const SignIn = (props) => {
       {error ? <p>{error}</p> : null}
       <input type="submit" className={style.submit} />
       <div className={style.info}>
-        Don't have an accaunt? <Link to="/sign-up">Sign Up</Link>
+        Dont have an accaunt? <Link to="/sign-up">Sign Up</Link>
       </div>
     </form>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     error: state.user.error,
   };

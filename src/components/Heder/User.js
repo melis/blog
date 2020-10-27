@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import * as actions from '../../store/userActions';
 import style from './Heder.module.scss';
 
-const User = (props) => {
+const User = props => {
   const { user, logOut } = props;
 
   return (
@@ -25,13 +25,13 @@ const User = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: state.user.user,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   const { logOut } = bindActionCreators(actions, dispatch);
   return {
     logOut,

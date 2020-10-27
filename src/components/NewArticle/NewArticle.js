@@ -5,7 +5,7 @@ import style from './NewArticle.module.scss';
 import * as actions from '../../store/slugActions';
 import ArticleForm from '../EditArticleForm/EditArticleForm';
 
-const NewArticle = (props) => {
+const NewArticle = props => {
   const { createSlug, token } = props;
   return (
     <div className={style.article}>
@@ -14,7 +14,7 @@ const NewArticle = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     token: state.user.user.token,
   };
