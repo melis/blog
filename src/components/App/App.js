@@ -21,8 +21,10 @@ const App = (props) => {
         <Route path="/" exact component={Content} />
         <Route path="/articles" exact component={Content} />
         <Route path="/articles/:slugName" exact component={Slug} />
-        <Route path="/articles/:slugName/edit" exact component={EditArticle} />
 
+        <Route path="/articles/:slugName/edit" exact>
+          {loggedIn ? <EditArticle /> : <Redirect to="/sign-in" />}
+        </Route>
         <Route path="/profile" exact>
           {loggedIn ? <EditUser /> : <Redirect to="/sign-in" />}
         </Route>
