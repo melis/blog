@@ -20,8 +20,8 @@ class EditableTagGroup extends React.Component {
     this.props.setTags(this.state.tags);
   }
 
-  handleClose = removedTag => {
-    const tags = this.state.tags.filter(tag => tag !== removedTag);
+  handleClose = (removedTag) => {
+    const tags = this.state.tags.filter((tag) => tag !== removedTag);
 
     this.setState(() => {
       return { tags };
@@ -32,7 +32,7 @@ class EditableTagGroup extends React.Component {
     this.setState({ inputVisible: true }, () => this.input.focus());
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     this.setState({ inputValue: e.target.value });
   };
 
@@ -50,16 +50,16 @@ class EditableTagGroup extends React.Component {
     });
   };
 
-  saveInputRef = input => {
+  saveInputRef = (input) => {
     this.input = input;
   };
 
-  forMap = tag => {
+  forMap = (tag) => {
     const tagElem = (
       <Tag
         color="success"
         closable
-        onClose={e => {
+        onClose={(e) => {
           e.preventDefault();
           this.handleClose(tag);
         }}
@@ -88,7 +88,7 @@ class EditableTagGroup extends React.Component {
               opacity: 0,
               type: 'from',
               duration: 100,
-              onComplete: e => {
+              onComplete: (e) => {
                 e.target.style = '';
               },
             }}

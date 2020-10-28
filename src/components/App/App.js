@@ -12,7 +12,7 @@ import EditUser from '../EditUser/EditUser';
 import NewArticle from '../NewArticle/NewArticle';
 import EditArticle from '../EditArticle/EditArticle';
 
-const App = props => {
+const App = (props) => {
   const { loggedIn } = props;
   return (
     <div className={styles.app}>
@@ -22,7 +22,10 @@ const App = props => {
         <Route path="/articles" exact component={Content} />
         <Route path="/articles/:slugName" exact component={Slug} />
         <Route path="/articles/:slugName/edit" exact component={EditArticle} />
-        <Route path="/profile" exact component={EditUser} />
+
+        <Route path="/profile" exact>
+          {loggedIn ? <EditUser /> : <Redirect to="/sign-in" />}
+        </Route>
         <Route path="/sign-in" exact>
           {loggedIn ? <Redirect to="/" /> : <SignIn />}
         </Route>
@@ -37,7 +40,7 @@ const App = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loggedIn: !!state.user.user,
   };
