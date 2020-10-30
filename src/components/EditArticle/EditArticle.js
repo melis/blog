@@ -9,8 +9,6 @@ import { withRouter } from 'react-router-dom';
 const EditArticle = (props) => {
   const { user, match, setSlug, updSlug, slug } = props;
   const { slugName } = match.params;
-  console.log(user, slug);
-
   useEffect(() => {
     setSlug(slugName, user.token);
   }, [slugName]);

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Like from '../Like/Like';
 import style from './SlugPage.module.scss';
 
-const SlugPage = props => {
+const SlugPage = (props) => {
   const { article, user, deleteSlug, history } = props;
   const [dell, setDell] = useState(false);
 
@@ -20,7 +20,7 @@ const SlugPage = props => {
   //       return <Tag key={tag}>{tag}</Tag>;
   //     })
   //   : [];
-  const taglist = [...article.tagList].map(tag => {
+  const taglist = [...article.tagList].map((tag) => {
     return <Tag key={tag}>{tag}</Tag>;
   });
 
@@ -63,12 +63,12 @@ const SlugPage = props => {
               Delete
               {dell ? (
                 <span
-                  onKeyDown={event => {
+                  onKeyDown={(event) => {
                     event.stopPropagation();
                   }}
                   role="button"
                   tabIndex={0}
-                  onClick={event => {
+                  onClick={(event) => {
                     event.stopPropagation();
                   }}
                   className={style.modal}

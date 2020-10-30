@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import style from './SignIn.module.scss';
 import * as actions from '../../store/userActions';
 
-const SignIn = props => {
+const SignIn = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const { setUser, error } = props;
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     setUser(data);
   };
 
@@ -53,7 +53,7 @@ const SignIn = props => {
     </form>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     error: state.user.error,
   };
