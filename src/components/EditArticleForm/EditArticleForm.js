@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 import style from './EditArticleForm.module.scss';
 import Tags from '../Tags/Tags';
 
-const ArticleForm = props => {
+const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;
   const { register, handleSubmit, errors, setValue } = useForm();
   const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState('');
 
-  const onSubmit = a => {
+  const onSubmit = (a) => {
     const newArticle = {
       ...a,
       tagList: tags,
@@ -24,6 +25,10 @@ const ArticleForm = props => {
       setValue('body', slug.body);
     }
   }, [slug]);
+
+  useEffect(() => {
+    console.log(tags);
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +77,24 @@ const ArticleForm = props => {
       </label>
       <div className={style.tags}>
         <div>Tags</div>
-        <Tags tags={slug ? slug.tagList : []} setTags={setTags} />
+        {/* <Tags tags={slug ? slug.tagList : []} setTags={setTags} /> */}
+        <div>tags</div>
+        <input
+          type="text"
+          placeholder="new tag"
+          value={newTag}
+          onChange={(a) => {
+            setNewTag(a.target.value);
+          }}
+        />
+        <span
+          className={style.add}
+          onClick={() => {
+            setTags([...tags.filter((el) => el !== newTag), newTag]);
+          }}
+        >
+          Add tag
+        </span>
       </div>
 
       <input type="submit" value="Save" className={style.submit} />

@@ -27,13 +27,39 @@ form {
   }
   .tags {
     margin: 30px 0;
+    > input {
+      background: #ffffff;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      border-radius: 4px;
+      margin-right: 10px;
+      padding: 5px;
+    }
+    > .add {
+      background: #ffffff;
+      border: 1px solid #1890ff;
+      box-sizing: border-box;
+      border-radius: 4px;
+      padding: 5px 15px;
+      color: #1890ff;
+      cursor: pointer;
+    }
+    > .delete {
+      background: #ffffff;
+      border: 1px solid red;
+      box-sizing: border-box;
+      border-radius: 4px;
+      padding: 5px 15px;
+      color: red;
+      cursor: pointer;
+    }
   }
   .submit {
     background: #1890ff;
     border-radius: 4px;
     color: white;
     border: none;
-    padding: 5px 30px;
+    padding: 6px 30px;
     cursor: pointer;
   }
 }
