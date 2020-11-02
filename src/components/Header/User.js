@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import * as actions from '../../store/userActions';
+import * as actions from '../../store/user/userActions';
 import style from './Header.module.scss';
 
 const User = (props) => {

@@ -1,9 +1,9 @@
-import blogApi from '../api/api';
+import blogApi from '../../api/api';
 
-export const setUser = userDate => {
-  return dispatch => {
+export const setUser = (userDate) => {
+  return (dispatch) => {
     dispatch({ type: 'SET_USER_LOADING', loading: true });
-    blogApi.signIn(userDate).then(a => {
+    blogApi.signIn(userDate).then((a) => {
       if (a.error) {
         dispatch({ type: 'SET_USER_ERROR', error: a.error });
       } else {
@@ -16,15 +16,15 @@ export const setUser = userDate => {
   };
 };
 
-export const createUser = newUser => {
+export const createUser = (newUser) => {
   const user = {
     email: newUser.email,
     username: newUser.username,
     password: newUser.password_1,
   };
-  return dispatch => {
+  return (dispatch) => {
     dispatch({ type: 'SET_USER_LOADING', loading: true });
-    blogApi.createAccaunt(user).then(a => {
+    blogApi.createAccaunt(user).then((a) => {
       if (a.error) {
         dispatch({ type: 'SET_USER_ERROR', error: a.error });
       } else {
@@ -38,9 +38,9 @@ export const createUser = newUser => {
 };
 
 export const updUser = (user, token) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({ type: 'SET_USER_LOADING', loading: true });
-    blogApi.updUser(user, token).then(a => {
+    blogApi.updUser(user, token).then((a) => {
       if (a.error) {
         dispatch({ type: 'SET_USER_ERROR', error: a.error });
       } else {

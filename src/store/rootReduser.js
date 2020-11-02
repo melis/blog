@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import articles from './articlesReduser';
-import slug from './slugReduser';
-import user from './userReduser';
+import articles from './articles/articlesReduser';
+import slug from './slug/slugReduser';
+import user from './user/userReduser';
 
 const persistConfig = {
   key: 'root',

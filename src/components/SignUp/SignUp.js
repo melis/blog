@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Checkbox } from 'antd';
 import PropTypes from 'prop-types';
-import * as actions from '../../store/userActions';
+import * as actions from '../../store/user/userActions';
 import style from './SignUp.module.scss';
 
-const SignUp = props => {
+const SignUp = (props) => {
   const { error, createUser } = props;
   const { register, handleSubmit, errors, setError } = useForm();
   const [chek, setChek] = useState(false);
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     if (data.password_1 === data.password_2) {
       createUser(data);
     } else {
@@ -84,7 +84,7 @@ const SignUp = props => {
       {error ? <p>{error}</p> : null}
       <Checkbox
         required
-        onChange={a => {
+        onChange={(a) => {
           setChek(a.target.checked);
         }}
         className={style.chekbox}
@@ -99,7 +99,7 @@ const SignUp = props => {
     </form>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     error: state.user.error,
   };

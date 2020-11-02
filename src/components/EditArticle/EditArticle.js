@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './EditArticle.module.scss';
-import * as actions from '../../store/slugActions';
+import * as actions from '../../store/slug/slugActions';
 import ArticleForm from '../EditArticleForm/EditArticleForm';
 import { withRouter } from 'react-router-dom';
 

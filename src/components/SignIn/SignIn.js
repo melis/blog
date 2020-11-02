@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './SignIn.module.scss';
-import * as actions from '../../store/userActions';
+import * as actions from '../../store/user/userActions';
 
 const SignIn = (props) => {
   const { register, handleSubmit, errors } = useForm();

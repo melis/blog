@@ -3,9 +3,9 @@ import { Pagination } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './Pagination.module.scss';
-import * as actions from '../../store/articlesActions';
+import * as actions from '../../store/articles/articlesActions';
 
-const Pagin = props => {
+const Pagin = (props) => {
   const { page, total, setArticles, token } = props;
 
   return (
@@ -17,14 +17,14 @@ const Pagin = props => {
         total={total}
         defaultPageSize={5}
         showSizeChanger={false}
-        onChange={val => {
+        onChange={(val) => {
           setArticles(val, token);
         }}
       />
     </div>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     page: state.articles.page,
     total: state.articles.total,

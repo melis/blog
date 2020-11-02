@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import * as actions from '../../store/slugActions';
+import * as actions from '../../store/slug/slugActions';
 import style from './Like.module.scss';
 
-const Like = props => {
+const Like = (props) => {
   const { article, token, likeArticle, dezLikeArticle, history } = props;
   const [like, setLike] = useState(article.favorited);
   const [likeCount, setLikeCount] = useState(article.favoritesCount);
@@ -41,11 +41,11 @@ const Like = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   const { likeArticle, dezLikeArticle } = bindActionCreators(actions, dispatch);
   return { likeArticle, dezLikeArticle };
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     token: state.user.user ? state.user.user.token : '',
   };

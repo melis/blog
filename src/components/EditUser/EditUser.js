@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './EditUser.module.scss';
-import * as actions from '../../store/userActions';
+import * as actions from '../../store/user/userActions';
 
-const EditUser = props => {
+const EditUser = (props) => {
   const { error, user, updUser } = props;
 
   const { register, handleSubmit, errors } = useForm();
@@ -14,7 +14,7 @@ const EditUser = props => {
   const [userImgUrl, setUserImgUrl] = useState(user.image);
   const [userPassword, setUserPassword] = useState('');
 
-  const onSubmit = a => {
+  const onSubmit = (a) => {
     setUserPassword('');
     updUser(a, user.token);
   };
@@ -25,7 +25,7 @@ const EditUser = props => {
         <div>Username</div>
         <input
           id="1"
-          onChange={a => {
+          onChange={(a) => {
             setUserName(a.target.value);
           }}
           className={errors.userName && style.error}
@@ -44,7 +44,7 @@ const EditUser = props => {
         <div>Email addres</div>
         <input
           id="2"
-          onChange={a => {
+          onChange={(a) => {
             setUserEmail(a.target.value);
           }}
           value={userEmail}
@@ -62,7 +62,7 @@ const EditUser = props => {
         <div>New password</div>
         <input
           id="3"
-          onChange={a => {
+          onChange={(a) => {
             setUserPassword(a.target.value);
           }}
           value={userPassword}
@@ -81,7 +81,7 @@ const EditUser = props => {
         <div>Avatar image (url)</div>
         <input
           id="4"
-          onChange={a => {
+          onChange={(a) => {
             setUserImgUrl(a.target.value);
           }}
           value={userImgUrl}
@@ -98,7 +98,7 @@ const EditUser = props => {
     </form>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     error: state.user.error,
     user: state.user.user,
