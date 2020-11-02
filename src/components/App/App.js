@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './App.module.scss';
-import Heder from '../Heder/Heder';
+import Header from '../Header/Header';
 import Content from '../Content/Content';
 import Slug from '../Slug/Slug';
 import SignIn from '../SignIn/SignIn';
@@ -17,7 +17,7 @@ const App = (props) => {
   return (
     <div className={styles.app}>
       <Router>
-        <Heder />
+        <Header />
         <Route path="/" exact component={Content} />
         <Route path="/articles" exact component={Content} />
         <Route path="/articles/:slugName" exact component={Slug} />

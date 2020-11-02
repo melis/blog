@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import style from './Heder.module.scss';
+import style from './Header.module.scss';
 import Login from './Login';
 import User from './User';
 
-const Heder = props => {
+const Heder = (props) => {
   const { userOn } = props;
 
   return (
@@ -20,7 +20,7 @@ const Heder = props => {
     </div>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     userOn: !!state.user.user,
   };

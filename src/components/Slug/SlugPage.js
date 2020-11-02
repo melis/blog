@@ -15,11 +15,7 @@ const SlugPage = (props) => {
   if (user) username = user.username;
 
   const date = article ? format(new Date(article.createdAt), 'MMMM,dd,yyyy') : null;
-  // const taglist = article
-  //   ? article.tagList.map(tag => {
-  //       return <Tag key={tag}>{tag}</Tag>;
-  //     })
-  //   : [];
+
   const taglist = [...article.tagList].map((tag) => {
     return <Tag key={tag}>{tag}</Tag>;
   });
@@ -74,7 +70,9 @@ const SlugPage = (props) => {
                   className={style.modal}
                 >
                   <div />
-                  <div> Are tou sure to delete this article?</div>
+                  <div className={style.dellTittle}>
+                    <span>!</span> <span>Are tou sure to delete this article</span>?
+                  </div>
                   <span
                     onKeyDown={() => {
                       setDell(false);

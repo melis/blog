@@ -18,18 +18,20 @@
       justify-content: flex-end;
       display: flex;
       > a {
+        border: 1px solid transparent;
         color: black;
         border-radius: 5px;
         display: block;
-        padding: 5px 10px;
+        padding: 5px 15px 7px 15px;
         margin: 5px;
       }
-      .green {
-        color: #52c41a !important;
+      > a:hover {
+        color: #52c41a;
         border: 1px solid #52c41a;
       }
-      .logout {
-        border: 1px solid;
+      .logout:hover {
+        color: black;
+        border: 1px solid black;
       }
     }
     .userImg {
