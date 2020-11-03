@@ -4,11 +4,12 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import style from './EditArticleForm.module.scss';
 import Tags from '../Tags/Tags';
+import Tag from '../Tag/Tag';
 
 const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;
   const { register, handleSubmit, errors, setValue } = useForm();
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(slug ? [...slug.tagList] : []);
   const [newTag, setNewTag] = useState('');
 
   const onSubmit = (a) => {
@@ -30,6 +31,9 @@ const ArticleForm = (props) => {
     console.log(tags);
   });
 
+  const taglist = tags.map((el) => {
+    return <Tag key={el} el={el} />;
+  });
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="1">
@@ -76,9 +80,8 @@ const ArticleForm = (props) => {
         {errors.body && <p>Your {errors.body.message} is required</p>}
       </label>
       <div className={style.tags}>
-        <div>Tags</div>
+        <div>{taglist}</div>
         {/* <Tags tags={slug ? slug.tagList : []} setTags={setTags} /> */}
-        <div>tags</div>
         <input
           type="text"
           placeholder="new tag"
@@ -90,7 +93,7 @@ const ArticleForm = (props) => {
         <span
           className={style.add}
           onClick={() => {
-            setTags([...tags.filter((el) => el !== newTag), newTag]);
+            if (newTag) setTags([...tags.filter((el) => el !== newTag), newTag]);
           }}
         >
           Add tag
