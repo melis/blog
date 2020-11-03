@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import Tag from '../Tag/Tag';
 import style from './EditArticleForm.module.scss';
-// import Tags from '../Tags/Tags';
 
 const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;
@@ -77,7 +76,6 @@ const ArticleForm = (props) => {
       </label>
       <div className={style.tags}>
         <div>{taglist}</div>
-        {/* <Tags tags={slug ? slug.tagList : []} setTags={setTags} /> */}
         <input
           type="text"
           placeholder="new tag"
@@ -93,7 +91,6 @@ const ArticleForm = (props) => {
               setTags([...tags.filter((el) => el !== newTag), newTag]);
               setNewTag('');
             }
-            console.log(tags);
           }}
         >
           Add tag

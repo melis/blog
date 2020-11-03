@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import style from './Tag.module.scss';
 
 const Tag = (props) => {
@@ -23,7 +24,6 @@ const Tag = (props) => {
       />
       <span
         onClick={() => {
-          console.log('dell', ind);
           setTags([...tags.filter((t) => t !== el)]);
         }}
       >
@@ -31,5 +31,12 @@ const Tag = (props) => {
       </span>
     </div>
   );
+};
+
+Tag.propTypes = {
+  el: PropTypes.string,
+  setTags: PropTypes.func,
+  tags: PropTypes.array,
+  ind: PropTypes.number,
 };
 export default Tag;
