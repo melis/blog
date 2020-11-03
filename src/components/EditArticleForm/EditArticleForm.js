@@ -28,12 +28,12 @@ const ArticleForm = (props) => {
     }
   }, [slug]);
 
-  useEffect(() => {
-    console.log(tags);
-  });
+  // useEffect(() => {
+  //   console.log(tags);
+  // });
 
-  const taglist = tags.map((el) => {
-    return <Tag key={el} el={el} setTags={setTags} tags={tags} />;
+  const taglist = tags.map((el,i) => {
+    return <Tag key={el} el={el} setTags={setTags} tags={tags} ind={i}/>;
   });
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

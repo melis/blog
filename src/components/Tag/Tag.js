@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const Tag = (props) => {
-  console.log(props);
+  // console.log(props);
   const { el, setTags, tags } = props;
   const [tag, setTag] = useState(el);
   
-    console.log('el', el,'tag',tag)
+    useEffect(()=>{
+console.log(tag, props)
+    },[tag])
 
   return (
     <div>
@@ -16,7 +18,7 @@ const Tag = (props) => {
        
           setTag(a.target.value);
 
-          // setTags([...tags, tag])
+        
         }}
       />
       <span>Delete</span>
