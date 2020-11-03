@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import style from './EditArticleForm.module.scss';
-import Tags from '../Tags/Tags';
 import Tag from '../Tag/Tag';
+import style from './EditArticleForm.module.scss';
+// import Tags from '../Tags/Tags';
+
 
 const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;
@@ -32,7 +33,7 @@ const ArticleForm = (props) => {
   });
 
   const taglist = tags.map((el) => {
-    return <Tag key={el} el={el} />;
+    return <Tag key={el} el={el} setTags={setTags} tags={tags} />;
   });
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
