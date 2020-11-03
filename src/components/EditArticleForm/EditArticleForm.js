@@ -75,6 +75,7 @@ const ArticleForm = (props) => {
         {errors.body && <p>Your {errors.body.message} is required</p>}
       </label>
       <div className={style.tags}>
+        <div>Tags</div>
         <div>{taglist}</div>
         <input
           type="text"
