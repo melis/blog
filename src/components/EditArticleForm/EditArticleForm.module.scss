@@ -44,14 +44,9 @@ form {
       color: #1890ff;
       cursor: pointer;
     }
-    > .delete {
-      background: #ffffff;
-      border: 1px solid red;
-      box-sizing: border-box;
-      border-radius: 4px;
-      padding: 5px 15px;
-      color: red;
-      cursor: pointer;
+    > .add:hover {
+      background-color: #1890ff;
+      color: white;
     }
   }
   .submit {

@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import style from './Tag.module.scss';
 
 const Tag = (props) => {
-  // console.log(props);
-  const { el, setTags, tags } = props;
+  const { el, setTags, tags, ind } = props;
   const [tag, setTag] = useState(el);
-  
-    useEffect(()=>{
-console.log(tag, props)
-    },[tag])
+
+  useEffect(() => {
+    let arr = [...tags];
+    arr[ind] = tag;
+    setTags([...arr]);
+  }, [tag]);
 
   return (
-    <div>
+    <div className={style.tag}>
       <input
+        autoFocus
         type="text"
         value={tag}
         onChange={(a) => {
-       
           setTag(a.target.value);
-
-        
         }}
       />
-      <span>Delete</span>
+      <span
+        onClick={() => {
+          console.log('dell', ind);
+          setTags([...tags.filter((t) => t !== el)]);
+        }}
+      >
+        Delete
+      </span>
     </div>
   );
 };

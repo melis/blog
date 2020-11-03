@@ -6,7 +6,6 @@ import Tag from '../Tag/Tag';
 import style from './EditArticleForm.module.scss';
 // import Tags from '../Tags/Tags';
 
-
 const ArticleForm = (props) => {
   const { token, history, submit, slug } = props;
   const { register, handleSubmit, errors, setValue } = useForm();
@@ -28,12 +27,8 @@ const ArticleForm = (props) => {
     }
   }, [slug]);
 
-  // useEffect(() => {
-  //   console.log(tags);
-  // });
-
-  const taglist = tags.map((el,i) => {
-    return <Tag key={el} el={el} setTags={setTags} tags={tags} ind={i}/>;
+  const taglist = tags.map((el, i) => {
+    return <Tag key={el} el={el} setTags={setTags} tags={tags} ind={i} />;
   });
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -94,14 +89,18 @@ const ArticleForm = (props) => {
         <span
           className={style.add}
           onClick={() => {
-            if (newTag) setTags([...tags.filter((el) => el !== newTag), newTag]);
+            if (newTag) {
+              setTags([...tags.filter((el) => el !== newTag), newTag]);
+              setNewTag('');
+            }
+            console.log(tags);
           }}
         >
           Add tag
         </span>
       </div>
 
-      <input type="submit" value="Save" className={style.submit} />
+      <input type="submit" value="Save" className={style.submit} autoFocus />
     </form>
   );
 };
