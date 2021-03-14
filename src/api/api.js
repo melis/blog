@@ -17,7 +17,11 @@ class Api {
       );
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -35,7 +39,11 @@ class Api {
       );
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -44,7 +52,11 @@ class Api {
       const res = await axios.post(`${this.baseUrl}users/login`, { user });
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -53,7 +65,11 @@ class Api {
       const res = await axios.post(`${this.baseUrl}users`, { user });
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -72,7 +88,11 @@ class Api {
       );
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -89,7 +109,11 @@ class Api {
       );
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -106,7 +130,11 @@ class Api {
       );
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -119,7 +147,11 @@ class Api {
       });
       return { error: 'Article deleted!' };
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -136,7 +168,11 @@ class Api {
       );
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 
@@ -149,7 +185,11 @@ class Api {
       });
       return res.data;
     } catch (e) {
-      return { error: JSON.stringify(e.response.data) };
+      return {
+        error: JSON.stringify(e.response.data)
+          .replace(/[^a-zа-яё]/gi, ' ')
+          .replace(/\s+/g, ' '),
+      };
     }
   }
 }

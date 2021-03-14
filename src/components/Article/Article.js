@@ -13,7 +13,7 @@ const truncate = (text) => {
 
 const Article = (props) => {
   const { article } = props;
-  console.log(article.author.image);
+
   const date = format(new Date(article.createdAt), 'MMMM,dd,yyyy');
   const taglist = article.tagList.map((tag) => {
     return <Tag key={tag}>{tag}</Tag>;
